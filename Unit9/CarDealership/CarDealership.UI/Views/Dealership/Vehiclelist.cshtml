@@ -1,0 +1,43 @@
+﻿@model List<CarDealership.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Vehiclelist";
+}
+
+<h3>Vehicle List</h3>
+
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>VehicleId</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Mileage</th>
+                <th>AdTitle</th>
+                <th>Price</th>
+                <th>IsAvailable</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model)
+            {
+                //if (dvd.IsBorrowed != true)
+                {
+                    <tr>
+                        <td> @vehicle.VehicleId </td>
+                        <td> @vehicle.Make </td>
+                        <td> @vehicle.Model </td>
+                        <td> @vehicle.Year </td>
+                        <td> @vehicle.Mileage </td>
+                        <td> @vehicle.AdTitle </td>
+                        <td> @vehicle.Price </td>
+                        <td> @vehicle.IsAvailable</td>
+                    </tr>
+                    <tr></tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

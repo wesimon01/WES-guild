@@ -1,0 +1,56 @@
+﻿@model List<Exercises.Models.Data.State>
+
+@{
+    ViewBag.Title = "GetStates";
+}
+
+<div>
+    <h1>States in the Repo</h1>
+
+    @if (Model.Any())
+    {
+        <table>
+            <thead>
+                <tr>
+                    <td>@using (Html.BeginForm("AddState", "Admin", FormMethod.Get))
+                    {                
+                    <button>Add State</button>}
+                    </td>
+                </tr>
+                <tr>
+                    <th>StateAbb.</th>
+                    <th>State</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var state in Model)
+                {
+                    <tr>
+                        <td>@state.StateAbbreviation</td>
+                        <td>@state.StateName</td>
+                        <td>@using (Html.BeginForm("EditState", "Admin", FormMethod.Get))
+                            {
+                          @Html.Hidden("abbreviation", state.StateAbbreviation)
+                        <button> Edit State</button>      
+                        }</td>
+                        <td>
+                            @using (Html.BeginForm("DeleteState", "Admin", FormMethod.Get))
+                        {
+                            @Html.Hidden("abbreviation", state.StateAbbreviation)
+                            <button> Delete State</button>
+                        }
+                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    }
+    else
+    {
+        <p>You do not have any states! Go add one!</p>
+    }
+
+</div>

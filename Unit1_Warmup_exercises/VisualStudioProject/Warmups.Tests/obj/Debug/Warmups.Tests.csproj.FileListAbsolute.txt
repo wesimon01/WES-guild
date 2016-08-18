@@ -1,0 +1,65 @@
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.pdb
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.pdb
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.xml
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.csprojResolveAssemblyReference.cache
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.pdb
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.interfaces.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.util.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.Tests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.pdb
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.interfaces.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.util.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.pdb
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.xml
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.csprojResolveAssemblyReference.cache
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.pdb
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.csprojResolveAssemblyReference.cache
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.pdb
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.pdb
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.interfaces.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.util.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.xml
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.pdb
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.interfaces.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.util.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.xml
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.csprojResolveAssemblyReference.cache
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.pdb
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.csprojResolveAssemblyReference.cache
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\obj\Debug\Warmups.Tests.pdb
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.Tests.pdb
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.core.interfaces.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.util.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\NUnit.VisualStudio.TestAdapter.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.Tests\bin\Debug\nunit.framework.xml

@@ -1,0 +1,81 @@
+﻿@model CarDealership.Models.Vehicle
+
+@{
+    ViewBag.Title = "Vehicleadd";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Add Vehicle</h3>
+        @Html.ActionLink("Go to Vehiclelist", "Vehiclelist", "Dealership")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("Vehicleadd", "Dealership", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label>Vehicle Make: </label>
+                @Html.TextBoxFor(m => m.Make, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m.Make)
+            </div>
+
+            <div class="form-group">
+                <label>Vehicle Model: </label>
+                <div id="">
+                    @Html.TextBoxFor(m => m.Model, new { @class = "form-control", placeholder = "" })
+                    @Html.ValidationMessageFor(m => m.Model)
+                </div>
+            </div>
+
+            <div class="form-group" id="">
+                <label>Year: </label>
+
+                @Html.EditorFor(m => m.Year, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m.Year)
+
+            </div>
+
+            <div class="form-group">
+                <label>Mileage: </label>
+                @Html.EditorFor(m => m.Mileage, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m.Mileage)
+            </div>
+
+            <div class="form-group">
+                <label>AdTitle: </label>
+                @Html.TextBoxFor(m => m.AdTitle, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m.AdTitle)
+            </div>
+
+            <div class="form-group">
+                <label>Description: </label>
+                <div id="">
+                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+            </div>
+
+            <div class="form-group" id="">
+                <label>Price: </label>
+                @Html.EditorFor(m => m.Price, new { @class = "form-control", Value = "" })
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+           
+             <div class="form-group" id="">
+                
+                @Html.HiddenFor(m => m.IsAvailable)
+                @Html.HiddenFor(m => m.PicUrl)
+            </div>
+           
+            
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>
+
+@section Scripts{
+
+}

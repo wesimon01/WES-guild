@@ -1,0 +1,73 @@
+﻿@model DVDLibrary.UI.ViewModels.DVDdisplayVM
+
+@{
+    ViewBag.Title = "DVDdisplay";
+}
+
+<div class="col-xs-12 col-sm-9">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>DVD Information</h3>
+            <br />
+            <div class="form-group">
+                <label>List of DVDs :</label>
+                <div id="">
+                    @Html.DropDownListFor(m => m._selectedDVDId, Model._DVDitems, "-Choose A DVD-", new { @class = "form-control", id = "SelectDVD" })
+                </div>
+            </div>
+            <br /><br />
+
+            @if (Model.Get(Model._selectedDVDId) != null) // check to see if selected employee is null
+            { 
+                <div class="row" id="">
+                    <div class="col-xs-12">
+                        <table class="table table-striped" style="width: auto;">
+                            <thead>
+                                <tr>
+                                    <th>DVDId</th>
+                                    <th>Title</th>
+                                    <th>Release_Date</th>
+                                    <th>Rating</th>
+                                    <th>Studio</th>
+                                    <th>DirectorName</th>
+                                    <th>User_Rating</th>
+                                    <th>User_Notes</th>
+                                    <th>ActorsInMovie</th>
+                                </tr>
+                            </thead>
+                            <tbody>   
+                                <tr>
+                                    <td>@Model.Get(Model._selectedDVDId).Id</td>
+                                    <td>@Model.Get(Model._selectedDVDId).Title</td>
+                                    <td>@Model.Get(Model._selectedDVDId).ReleaseDate.ToString("MM/dd/yyyy")</td>
+                                    <td>@Model.Get(Model._selectedDVDId).Rating</td>
+                                    <td>@Model.Get(Model._selectedDVDId).Studio</td>
+                                    <td>@Model.Get(Model._selectedDVDId).DirectorName</td>
+                                    <td>@Model.Get(Model._selectedDVDId).UserRating</td>
+                                    <td>@Model.Get(Model._selectedDVDId).UserNotes</td>
+                                    <td>@Model.Get(Model._selectedDVDId).ActorsInMovie</td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                        <br /><br />                      
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#SelectDVD").change(function () {
+                window.location.href = "/DVD/DVDdisplay?selectedDVDId=" + $(this).val();
+            });
+        });
+    </script>
+}
+
+
+
+

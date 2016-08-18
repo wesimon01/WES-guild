@@ -1,0 +1,87 @@
+﻿@model DVDLibrary.UI.ViewModels.DVDhistoryVM
+
+@{
+    ViewBag.Title = "DVDhistory";
+}
+
+<div class="col-xs-12 col-sm-9">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>DVD History</h3>
+            <br/>
+            <div class="form-group">
+                <label>List of DVDs :</label>
+                <div id="">
+                    @Html.DropDownListFor(m => m._selectedDVDId, Model._DVDitems, "-Choose A DVD-", new { @class = "form-control", id = "SelectDVD" })
+                </div>
+            </div>
+            <br /><br />
+
+            @if (Model.Get(Model._selectedDVDId) != null && Model.Get(Model._selectedDVDId).BorrowerList != null) // check to see if selected employee is null
+            {
+                <div class="row" id="">
+                    <div class="col-xs-12">
+                        <table class="table table-striped" style="width: auto;">
+                            <thead>
+                                <tr>
+                                    <th>DVDId</th>
+                                    <th>Title</th>
+                                    <th>Release Date</th>
+                                    <th>Rating</th>
+                                    <th>Borrowers</th>
+                                    <th>CheckOut Date</th>
+                                    <th>Return Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@Model.Get(Model._selectedDVDId).Id</td>
+                                    <td>@Model.Get(Model._selectedDVDId).Title</td>
+                                    <td>@Model.Get(Model._selectedDVDId).ReleaseDate.ToString("MM/dd/yyyy")</td>
+                                    <td>@Model.Get(Model._selectedDVDId).Rating</td>
+                                                             
+                                <td>
+                                    
+                                    @foreach (var borrower in Model.Get(Model._selectedDVDId).BorrowerList)
+                                    {
+                                         @borrower.BorrowerName 
+                                            <p></p>     
+                                    }
+                                    </td>
+                                    <td>
+                                     @foreach (var borrower in Model.Get(Model._selectedDVDId).BorrowerList)
+                                     {
+                                        @borrower.DateBorrowed.ToString("MM/dd/yyyy")
+                                        <p></p>
+                                           
+                                     }
+                                   </td>
+                                    <td>
+                                     @foreach (var borrower in Model.Get(Model._selectedDVDId).BorrowerList)
+                                     {                          
+                                            @borrower.DateReturned.ToString("MM/dd/yyyy")
+                                            <p></p>
+                                    }
+                                    </td>
+
+                                    </tr>                      
+                            </tbody>
+                        </table>
+                        <br/><br/>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#SelectDVD").change(function () {
+                window.location.href = "/DVD/DVDhistory?selectedDVDId=" + $(this).val();
+            });
+        });
+    </script>
+}

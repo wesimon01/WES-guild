@@ -1,0 +1,77 @@
+﻿ 
+@{
+    ViewBag.Title = "DVDsearch";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        @Html.Partial("_DVDSearchResult")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-6">
+        <h2>Search by Title</h2>
+        <div class="form-group">
+            <label>DVD Title</label>
+            <input type="text" id="dvdTitleInput" class="form-control"/>
+        </div>
+        <button class="btn btn-primary" id="btnSearchByTitle">Search</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <p id=""></p>
+    </div>
+</div>
+  
+@section Scripts{    
+<script>     
+        ///<reference path="jquery-2.1.3.min.js" />           
+        $(document).ready(function () {
+           
+            $("#btnSearchByTitle").click(function () {
+                var url = "/api/WebApi/";
+                var title = $("#dvdTitleInput").val();
+
+                $.getJSON(url + title)
+                .done(function (data) {
+                    $("#dvd1").text(data.Title);
+                    $("#dvd2").text(data.ReleaseDate);
+                    $("#dvd3").text(data.DirectorName);
+                    $("#dvd4").text(data.Studio);
+                    $("#dvd5").text(data.UserRating);
+                })
+
+                .fail(function (jqXHR, status, err) {
+                    $("#dvd").text('Error: ' + err);
+                });
+            });
+        });
+       
+        //function dateconvert(csharpdate) {
+        //    var dat = new Date(csharpdate);
+        //    return dat.getFullYear() "/" + dat.getMonth() + dat.getDay();
+        //}
+</script>
+
+<script>
+    $().ready(function () {
+        // on button click, show modal
+        $('#btnSearchByTitle').click(function () {
+            $('#SearchDVDbyTitleModal').modal('toggle');
+        });
+    })
+</script> 
+}
+
+
+
+
+
+
+ 
+   
+    
+   
+

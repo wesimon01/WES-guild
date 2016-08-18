@@ -1,0 +1,25 @@
+﻿@model SGCorpHRportal.Models.Category
+
+@{
+    ViewBag.Title = "CategoryDelete";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Delete Category</h3>
+        @Html.ActionLink("Return to CategoryManage", "CategoryManage", "Admin")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("CategoryDelete", "Admin", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.CategoryId)
+            @Html.HiddenFor(m => m.CategoryName)
+            <p>Are you sure that you wish to delete the category @Html.DisplayFor(m => m.CategoryName)?</p>
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "CategoryManage", "Admin", null, new { @class = "btn btn-sm btn-info" })
+        }
+    </div>
+</div> 
+

@@ -1,0 +1,9 @@
+<LogEntry Date="2016-07-23 14:17:59" Severity="Info" Source="loggertest.Program.Main" ThreadId="10">
+  <Message>Test logging started.</Message>
+</LogEntry>
+<LogEntry Date="2016-07-23 14:17:59" Severity="Warning" Source="loggertest.Program.Main" ThreadId="10">
+  <Message>This is a warning.</Message>
+</LogEntry>
+<LogEntry Date="2016-07-23 14:17:59" Severity="Error" Source="loggertest.Program.Main" ThreadId="10">
+  <Message>This is an error.</Message>
+</LogEntry>

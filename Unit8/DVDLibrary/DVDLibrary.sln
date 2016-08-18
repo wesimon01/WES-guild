@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDLibrary.UI", "DVDLibrary.UI\DVDLibrary.UI.csproj", "{C976A0F6-2EB2-4B7A-9C1F-47CBCB812EAC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{080F53BE-848C-4465-A8FB-4E8FCA3D19E5} = {080F53BE-848C-4465-A8FB-4E8FCA3D19E5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDLibrary.Data", "DVDLibrary.Data\DVDLibrary.Data.csproj", "{3FA6A940-BD08-438A-9FF6-DDBF8CDC6E26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDLibrary.Models", "DVDLibrary.Models\DVDLibrary.Models.csproj", "{8B69AD69-26FB-4B6E-95D0-AA7E7BF402DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDLibrary.BLL", "DVDLibrary.BLL\DVDLibrary.BLL.csproj", "{080F53BE-848C-4465-A8FB-4E8FCA3D19E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3FA6A940-BD08-438A-9FF6-DDBF8CDC6E26} = {3FA6A940-BD08-438A-9FF6-DDBF8CDC6E26}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDLibrary.Tests", "DVDLibrary.Tests\DVDLibrary.Tests.csproj", "{B5462660-9B20-497E-AFD9-09A3F98EBDE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDSQLConsole.cs", "DVDSQLConsole.cs\DVDSQLConsole.cs.csproj", "{924431E7-DBCB-4AC8-89C0-A1D00CD7FB23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C976A0F6-2EB2-4B7A-9C1F-47CBCB812EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C976A0F6-2EB2-4B7A-9C1F-47CBCB812EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C976A0F6-2EB2-4B7A-9C1F-47CBCB812EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C976A0F6-2EB2-4B7A-9C1F-47CBCB812EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FA6A940-BD08-438A-9FF6-DDBF8CDC6E26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FA6A940-BD08-438A-9FF6-DDBF8CDC6E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FA6A940-BD08-438A-9FF6-DDBF8CDC6E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FA6A940-BD08-438A-9FF6-DDBF8CDC6E26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B69AD69-26FB-4B6E-95D0-AA7E7BF402DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B69AD69-26FB-4B6E-95D0-AA7E7BF402DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B69AD69-26FB-4B6E-95D0-AA7E7BF402DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B69AD69-26FB-4B6E-95D0-AA7E7BF402DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080F53BE-848C-4465-A8FB-4E8FCA3D19E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080F53BE-848C-4465-A8FB-4E8FCA3D19E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080F53BE-848C-4465-A8FB-4E8FCA3D19E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080F53BE-848C-4465-A8FB-4E8FCA3D19E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5462660-9B20-497E-AFD9-09A3F98EBDE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5462660-9B20-497E-AFD9-09A3F98EBDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5462660-9B20-497E-AFD9-09A3F98EBDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5462660-9B20-497E-AFD9-09A3F98EBDE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{924431E7-DBCB-4AC8-89C0-A1D00CD7FB23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924431E7-DBCB-4AC8-89C0-A1D00CD7FB23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924431E7-DBCB-4AC8-89C0-A1D00CD7FB23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924431E7-DBCB-4AC8-89C0-A1D00CD7FB23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

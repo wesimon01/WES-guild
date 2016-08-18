@@ -1,0 +1,46 @@
+﻿@model SGCorpHRportal.Models.ViewModels.PolAddVM
+
+@{
+    ViewBag.Title = "PolicyAdd";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Policy Add</h3>
+        @Html.ActionLink("Return to PolicyList", "PolicyList", "Admin")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("PolicyAdd", "Admin", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Policy Name :</label>
+                @Html.TextBoxFor(m => m.policy.PolicyName, new { @class = "form-control", placeholder = "" })
+            </div>
+
+            <div class="form-group" >
+                <label>Categories :</label>
+                <div id = "DropDownCategoryEntry">
+                    @Html.DropDownListFor(m => m.policy.Category.CategoryId, Model.CategoryItems, "-Choose Category-", new { @class = "form-control" })
+                </div>            
+            </div>
+
+            <div class="form-group" id="CategoryTextBox">
+                <label>Category Name :</label>
+                @Html.TextBoxFor(m => m.policy.Category.CategoryName, new { @class = "form-control", placeholder = "" })
+            </div>
+
+            <div class="form-group">
+                <label>Policy Content :</label>
+                @Html.TextBoxFor(m => m.policy.Content, new { @class = "form-control", placeholder = "", @style = "width: 400px; height: 200px; padding: 5px;" })
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>  
+
+@section Scripts{
+  
+}     

@@ -1,0 +1,63 @@
+﻿@model List<BlogEngine.Models.Hashtag>
+
+@{ 
+    int counter = 0;
+    int lastTagId = 0;
+}
+
+
+<!-- Blog Search Well -->
+<div class="well">
+    <h4>Blog Search</h4>
+    <form id="searchForm">
+        <div class="input-group">
+            <input type="text" class="form-control" id="hashtagtext">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="btnSearchByHashtag">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </form>
+    <!-- /.input-group -->
+</div>
+<!-- Blog Categories Well -->
+<div class="well">
+    <h4>Blog Categories</h4>
+    <div class="row">
+        <div class="col-lg-6">
+            <ul class="list-unstyled">
+                @foreach (var tag in Model)
+                {
+                    <li>
+                        <a href="/Home/Index?hashtagName=@tag.HashtagName">#@tag.HashtagName</a>
+                    </li>
+                        counter++;
+                
+                    if (counter == 4)
+                    {
+                        lastTagId = tag.HashtagId;
+                        break;
+                    }
+                }
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <ul class="list-unstyled">
+                @foreach (var tag in Model)
+                {
+                    <li>
+                        @if ((tag.HashtagId > lastTagId) && (tag != null))
+                        {
+                            <a href="/Home/Index?hashtagName=@tag.HashtagName">#@tag.HashtagName</a>
+                            counter++;
+                        }
+                    </li>
+                    if (counter == 8) { break; }
+                }
+            </ul>
+        </div>
+
+        </div>
+    </div>
+

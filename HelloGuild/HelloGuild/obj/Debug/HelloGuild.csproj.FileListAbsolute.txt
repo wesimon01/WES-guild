@@ -1,0 +1,9 @@
+C:\_repos\Evan-Simon-individual-work\HelloGuild\HelloGuild\bin\Debug\HelloGuild.exe.config
+C:\_repos\Evan-Simon-individual-work\HelloGuild\HelloGuild\bin\Debug\HelloGuild.exe
+C:\_repos\Evan-Simon-individual-work\HelloGuild\HelloGuild\bin\Debug\HelloGuild.pdb
+C:\_repos\Evan-Simon-individual-work\HelloGuild\HelloGuild\obj\Debug\HelloGuild.csprojResolveAssemblyReference.cache
+C:\_repos\Evan-Simon-individual-work\HelloGuild\HelloGuild\obj\Debug\HelloGuild.exe
+C:\_repos\Evan-Simon-individual-work\HelloGuild\HelloGuild\obj\Debug\HelloGuild.pdb
+C:\_repos\HelloGuild\HelloGuild\bin\Debug\HelloGuild.exe.config
+C:\_repos\HelloGuild\HelloGuild\obj\Debug\HelloGuild.exe
+C:\_repos\HelloGuild\HelloGuild\obj\Debug\HelloGuild.pdb

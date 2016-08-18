@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SGCorpHRportal.Models.Category>
+
+@{
+    ViewBag.Title = "CategoryManage";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Category Manage</h3>
+        @Html.ActionLink("Add Category", "CategoryAdd", "Admin", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-striped" style="width: auto;">
+            <thead>
+                <tr>
+                    <th>CategoryId#</th>
+                    <th>Category Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@category.CategoryId</td>
+                        <td>@category.CategoryName</td>                      
+                        <td>
+                            @Html.ActionLink("Delete", "CategoryDelete", "Admin", new { id = "CategoryId", category.CategoryId }, new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

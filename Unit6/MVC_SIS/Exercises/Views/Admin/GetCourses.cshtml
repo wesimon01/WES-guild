@@ -1,0 +1,61 @@
+﻿@model List<Exercises.Models.Data.Course>
+
+@{
+    ViewBag.Title = "GetCourses";
+}
+
+<div>
+    <h1>Courses in the Repo</h1>
+
+    @if (Model.Any())
+    {
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        @using (Html.BeginForm("AddCourse", "Admin", FormMethod.Get))
+                    {
+                        @Html.Hidden("id")
+                        <button>Add Course</button>
+                        }
+                </td>
+            </tr>
+            <tr>
+                <th>CourseId</th>
+                <th>Course</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+                {
+                <tr>
+                    <td>@course.CourseId</td>
+                    <td>@course.CourseName</td>
+                    <td>
+                        @using (Html.BeginForm("EditCourse", "Admin", FormMethod.Get))
+                    {
+                        @Html.Hidden("CourseId", course.CourseId)
+                        <button> Edit Course</button>
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("DeleteCourse", "Admin", FormMethod.Get))
+                    {
+                        @Html.Hidden("CourseId", course.CourseId)
+                        <button> Delete Course</button>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    }
+    else
+    {
+        <p>You do not have any courses! Go add one!</p>
+    }
+
+</div>

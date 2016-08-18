@@ -1,0 +1,5 @@
+C:\_repos\evan-simon-individual-work\Unit9\CarDealership\CarDealership.Models\bin\Debug\CarDealership.Models.dll
+C:\_repos\evan-simon-individual-work\Unit9\CarDealership\CarDealership.Models\bin\Debug\CarDealership.Models.pdb
+C:\_repos\evan-simon-individual-work\Unit9\CarDealership\CarDealership.Models\obj\Debug\CarDealership.Models.dll
+C:\_repos\evan-simon-individual-work\Unit9\CarDealership\CarDealership.Models\obj\Debug\CarDealership.Models.pdb
+C:\_repos\evan-simon-individual-work\Unit9\CarDealership\CarDealership.Models\obj\Debug\CarDealership.Models.csprojResolveAssemblyReference.cache

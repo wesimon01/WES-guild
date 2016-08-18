@@ -1,0 +1,4 @@
+OrderNumber, CustomerName, State, TaxRate, productType, Area, CostFt2, LaborFt2, materialCost, laborCost, Tax, Total, date
+2, Waluigi, OH, 6.25 , Wood, 100.00, 5.15, 4.75, 515.00, 475.00, 61.88, 1051.88, 06/20/2016
+3, Wondo, OH, 6.25 , Wood, 100.00, 5.15, 4.75, 515.00, 475.00, 61.88, 1051.88, 06/20/2016
+4, Wronskian, OH, 6.25 , Wood, 100.00, 5.15, 4.75, 515.00, 475.00, 61.88, 1051.88, 06/20/2016

@@ -1,0 +1,42 @@
+﻿@model List<DVDLibrary.Models.DVD>
+
+@{
+    ViewBag.Title = "DVDlist";
+}
+
+<h3>DVD List</h3>
+
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>DVDId</th>
+                <th>Title</th>
+                <th>Release_Date</th>
+                <th>Rating</th>
+                <th>Studio</th>
+                <th>User_Rating</th>
+                <th>UserNotes</th>
+                <th>ActorsInMovie</th>          
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dvd in Model)
+            {
+                if(dvd.IsBorrowed != true){
+               <tr>
+                    <td> @dvd.Id </td>
+                    <td> @dvd.Title </td>
+                    <td> @dvd.ReleaseDate.ToString("MM/dd/yyyy") </td>
+                    <td> @dvd.Rating </td>
+                    <td> @dvd.Studio </td>
+                    <td> @dvd.UserRating </td>
+                    <td> @dvd.UserNotes </td>
+                    <td> @dvd.ActorsInMovie </td>
+               </tr>
+                <tr></tr>
+            }
+    }
+        </tbody>
+    </table>
+</div>

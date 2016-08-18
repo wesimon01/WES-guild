@@ -1,0 +1,5 @@
+OrderNumber, CustomerName, State, TaxRate, productType, Area, CostFt2, LaborFt2, materialCost, laborCost, Tax, Total, date
+2,evan,OH,6.25,carpet,100,2.25,2.10,225.00,210.00,27.1875,462.1875,06/30/2016
+3,ass,IN,6.00,tile,100,3.50,4.15,350.00,415.00,45.9000,810.9000,06/30/2016
+4,goatsimulator,MI,5.75,wood,100,5.15,4.75,515.00,475.00,56.9250,1046.9250,06/30/2016
+5,goatSimulatorSuck,MI,5.75,laminate,400,1.75,2.10,700.00,840.00,88.5500,1628.5500,06/30/2016

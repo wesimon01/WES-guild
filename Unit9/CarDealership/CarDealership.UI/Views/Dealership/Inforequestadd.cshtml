@@ -1,0 +1,103 @@
+﻿@model CarDealership.UI.ViewModels.InforequestaddVM
+
+@{
+    ViewBag.Title = "Inforequestadd";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Submit InfoRequest</h3>
+        @Html.ActionLink("Go to InfoRequestlist", "Inforequestlist", "Dealership")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("Inforequestadd", "Dealership", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                <label>List of Vehicles :</label>
+                <div id="">
+                    @Html.DropDownListFor(m => m._selectedVehicleId, Model._Vehicleitems, "-Choose A Vehicle-", new { @class = "form-control", id = "SelectVehicle" })
+                </div>
+            </div>
+            <br /><br />
+
+            <div class="form-group">
+                <label>Inquier Name: </label>
+                @Html.TextBoxFor(m => m._inforequest.PersonName, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m._inforequest.PersonName)
+            </div>
+
+            <div class="form-group">
+                <label>Email Address: </label>
+                <div id="">
+                    @Html.TextBoxFor(m => m._inforequest.EmailAddress, new { @class = "form-control", placeholder = "" })
+                    @Html.ValidationMessageFor(m => m._inforequest.EmailAddress)
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number: </label>
+                <div id="">
+                    @Html.TextBoxFor(m => m._inforequest.PhoneNumber, new { @class = "form-control", placeholder = "" })
+                    @Html.ValidationMessageFor(m => m._inforequest.PhoneNumber) 
+                </div>
+            </div>
+
+            <div class="form-group" id="">
+                <label>Best Time to Call: </label>
+
+                @Html.RadioButtonFor(t => t._inforequest.TimetoCall, 0)
+                @Html.LabelFor(t => t._inforequest.TimetoCall, "Morning" )
+                @Html.RadioButtonFor(t => t._inforequest.TimetoCall, 1)
+                @Html.LabelFor(t => t._inforequest.TimetoCall, "Afternoon")
+                @Html.RadioButtonFor(t => t._inforequest.TimetoCall, 2)
+                @Html.LabelFor(t => t._inforequest.TimetoCall, "Evening")
+                
+            </div>
+
+            <div class="form-group" id="">
+                <label>Preferred Contact Method: </label>
+
+                @Html.RadioButtonFor(t => t._inforequest.ContactMethod, 0)
+                @Html.LabelFor(t => t._inforequest.ContactMethod, "Phone")
+                @Html.RadioButtonFor(t => t._inforequest.ContactMethod, 1)
+                @Html.LabelFor(t => t._inforequest.ContactMethod, "Email")
+
+            </div>
+
+            <div class="form-group">
+                <label>Days Til Purchase: </label>
+                @Html.EditorFor(m => m._inforequest.PurchaseTimeFrame, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m._inforequest.PurchaseTimeFrame)
+            </div>
+
+            <div class="form-group">
+                <label>Additional Info: </label>
+                @Html.TextBoxFor(m => m._inforequest.AdditionalInfo, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m._inforequest.AdditionalInfo)
+            </div>
+
+            <div class="form-group" id="">
+
+                @Html.HiddenFor(m => m._inforequest.LastContactDate)
+                @Html.HiddenFor(m => m._inforequest.Status)
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>
+
+@section Scripts{
+
+}
+
+
+
+

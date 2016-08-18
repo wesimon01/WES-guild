@@ -1,0 +1,90 @@
+﻿@model DVDLibrary.Models.DVD
+
+@{
+    ViewBag.Title = "DVDadd";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Add DVD</h3>
+        @Html.ActionLink("Go to DVDlist", "DVDlist", "DVD")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("DVDadd", "DVD", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label>DVD Title: </label>
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+
+            <div class="form-group">
+                <label>DVD Release Date: </label>
+                <div id="">
+                    @Html.EditorFor(m => m.ReleaseDate, "-Choose Category-", new { Value = "", htmlAttributes = new { @type = "date" }})
+                    @Html.ValidationMessageFor(m => m.ReleaseDate)
+                </div>
+            </div>
+
+            <div class="form-group" id="">
+                <label>Rating: </label>             
+                @Html.RadioButtonFor(m => m.Rating, 0)
+                @Html.LabelFor(m => m.Rating, "G" )
+                @Html.RadioButtonFor(m => m.Rating, 1)
+                @Html.LabelFor(m => m.Rating, "PG" )
+                @Html.RadioButtonFor(m => m.Rating, 2)
+                @Html.LabelFor(m => m.Rating, "PG_13")
+                @Html.RadioButtonFor(m => m.Rating, 3)
+                @Html.LabelFor(m => m.Rating, "R")
+                @Html.RadioButtonFor(m => m.Rating, 4)
+                @Html.LabelFor(m => m.Rating, "NC_17")
+            </div>
+
+            <div class="form-group">
+                <label>Director Name: </label>
+                @Html.TextBoxFor(m => m.DirectorName, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m.DirectorName)
+            </div>
+            
+            <div class="form-group">
+                <label>Studio: </label>
+                @Html.TextBoxFor(m => m.Studio, new { @class = "form-control", placeholder = "" })
+                @Html.ValidationMessageFor(m => m.Studio)
+            </div>
+
+            <div class="form-group">
+                <label>Actors in Movie: </label>
+                <div id="">
+                    @Html.TextBoxFor(m => m.ActorsInMovie, new { @class = "form-control", placeholder = "" })
+                    @Html.ValidationMessageFor(m => m.ActorsInMovie)
+                </div>
+            </div>
+
+            <div class="form-group" id="">
+                <label>User Rating :</label>
+                @Html.TextBoxFor(m => m.UserRating, new { @class = "form-control", Value = "" })
+                @Html.ValidationMessageFor(m => m.UserRating)
+            </div>
+
+            <div class="form-group">
+                <label>User Notes :</label>
+                @Html.TextBoxFor(m => m.UserNotes, new { @class = "form-control", placeholder = "", @style = "padding: 15px 10px 100px 10px" })
+                @Html.ValidationMessageFor(m => m.UserNotes)
+            </div>
+
+            @Html.HiddenFor(m => m.BorrowerList)
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>
+
+@section Scripts{
+
+}
+
+     
+

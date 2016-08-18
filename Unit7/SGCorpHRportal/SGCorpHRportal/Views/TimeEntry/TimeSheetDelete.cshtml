@@ -1,0 +1,26 @@
+﻿
+@model SGCorpHRportal.Models.ViewModels.DeleteVM
+
+@{
+    ViewBag.Title = "TimeSheetDelete";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Delete Time Entry</h3>
+        @Html.ActionLink("Return to Time Sheets", "EmployeeTimeSheet", "TimeEntry")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("TimeSheetDelete", "TimeEntry", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.EmpId)
+            @Html.HiddenFor(m => m.date)
+            <p>Are you sure that you wish to delete the Time entry?</p>
+            
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "EmployeeTimeSheet", "TimeEntry", null, new { @class = "btn btn-sm btn-info" })
+        }
+    </div>
+</div> 

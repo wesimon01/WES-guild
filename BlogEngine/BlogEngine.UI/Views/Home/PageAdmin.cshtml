@@ -1,0 +1,35 @@
+﻿@model List<BlogEngine.Models.Page>
+@{
+    ViewBag.Title = "PageAdmin";
+}
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.Partial("_AdminMenu")
+    </div>
+    <div class="col-md-8">
+        <a href="/Home/CreatePage" class="btn btn-primary">Create New Page</a>
+        <h3>All Pages</h3>
+        @if (Model.Any())
+        {
+            <table class="table">
+                <tbody>
+                    @foreach (var page in Model)
+                    {
+                        <tr class="clickable-row" data-type="page" data-id="@page.PageId">
+                            <td>@page.Title</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>None</p>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/dashboard.js"></script>
+}

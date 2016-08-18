@@ -1,0 +1,34 @@
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.pdb
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.xml
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.csprojResolveAssemblyReference.cache
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.dll
+C:\github\microsoft\Labs\Warmups\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.pdb
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.pdb
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.xml
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.csprojResolveAssemblyReference.cache
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.dll
+C:\github\louisvilledotnetmay2016materials\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.xml
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.csprojResolveAssemblyReference.cache
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.dll
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.xml
+C:\_repos\evan-simon-individual-work\Unit 1_Warmup_exercises\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.csprojResolveAssemblyReference.cache
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.BLL\obj\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.BLL\bin\Debug\Warmups.BLL.pdb
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.dll
+C:\_repos\evan-simon-individual-work\Unit1_Warmup_exercises\VisualStudioProject\Warmups.BLL\bin\Debug\nunit.framework.xml

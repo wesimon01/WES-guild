@@ -1,0 +1,34 @@
+﻿j
+
+@{
+    ViewBag.Title = "ApiSandbox";
+}
+
+<h2>ApiSandbox</h2>
+
+
+@section Scripts{
+    <script>
+
+        ///<reference path="jquery-2.1.3.min.js" />
+        $(document).ready(function () {
+
+            $("#btnSearchByTitle").click(function () {
+                var url = "/api/WebApi/";
+                var title = $("#dvdTitleInput").val();
+
+                $.getJSON(url + title)
+                .done(function (data) {
+                    $("#dvd1").text(data.Title);
+                    $("#dvd2").text(data.ReleaseDate);
+                    $("#dvd3").text(data.DirectorName);
+                    $("#dvd4").text(data.Studio);
+                    $("#dvd5").text(data.UserRating);
+                })
+
+                .fail(function (jqXHR, status, err) {
+                    $("#dvd").text('Error: ' + err);
+                });
+            });
+        });
+</script>

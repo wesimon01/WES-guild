@@ -1,0 +1,2 @@
+OrderNumber, CustomerName, State, TaxRate, productType, Area, CostFt2, LaborFt2, materialCost, laborCost, Tax, Total, date
+1,goat,PA,6.75,tile,456,3.50,4.15,1596.00,1892.40,235.4670,3723.8670,07/02/2016

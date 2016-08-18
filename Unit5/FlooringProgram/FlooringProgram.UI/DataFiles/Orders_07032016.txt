@@ -1,0 +1,4 @@
+OrderNumber, CustomerName, State, TaxRate, productType, Area, CostFt2, LaborFt2, materialCost, laborCost, Tax, Total, date
+1,evan,OH,6.25,wood,5000,5.15,4.75,25750.00,23750.00,3093.75,52593.75,07/03/2016
+2,bocMax,IN,6.00,tile,600,3.50,4.15,2100.00,2490.00,275.40,4865.40,07/03/2016
+3,doge,OH,6.25,wood,208,5.15,4.75,1071.20,988.00,128.70,2187.90,07/03/2016

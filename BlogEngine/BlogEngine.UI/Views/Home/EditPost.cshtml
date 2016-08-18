@@ -1,0 +1,78 @@
+﻿@model BlogEngine.UI.Viewmodels.CreatePostVM
+@{
+    ViewBag.Title = "EditPost";
+}
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+    selector: 'textarea',
+    plugins: "image",
+    image_dimensions: 'false',
+    relative_urls: false
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.Partial("_AdminMenu")
+    </div>
+    <div class="col-md-8">
+        <h2>Edit Post</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.Post.Author.AuthorName)
+            @Html.HiddenFor(m => m.Post.PostId)
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label>Title</label>
+                @Html.TextBoxFor(m => m.Post.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Post.Title)
+            </div>
+            <div class="form-group">
+                <label>Date to Publish</label>
+                @Html.TextBoxFor(m => m.Post.datePublished, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(m => m.Post.datePublished)
+            </div>
+            <div class="form-group">
+                <label>Date Expires</label>
+                @Html.TextBoxFor(m => m.Post.dateExpires, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+            </div>
+            <div class="form-group">
+                <label>Tags</label>
+                @Html.TextBoxFor(m => m.Tags, new { @class = "form-control" })
+                @foreach (var tag in Model.Post.Hashtags)
+                {
+                    <span class="label label-info">#@tag.HashtagName</span>
+                }
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                @Html.ValidationMessageFor(m => m.Post.Content)
+                @Html.TextAreaFor(m => m.Post.Content, new { @class = "form-control" })
+            </div>
+            if(User.IsInRole("Admin"))
+            {
+            <div class="form-group">
+                <label>Approve</label>
+                @Html.CheckBoxFor(m => m.Post.IsApproved)
+            </div>
+            }
+            <button class="btn btn-primary" type="submit">Save Post</button>
+            <a href="/Home/DeletePost/@Model.Post.PostId" id="deletePostBtn" class="btn btn-danger">Delete Post</a>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(function(){
+            $('#deletePostBtn').click(function (e) {
+                if(!confirm("Are you sure you want to delete this post?"))
+                {
+                    e.preventDefault();
+                }
+            })
+        })
+    </script>
+}

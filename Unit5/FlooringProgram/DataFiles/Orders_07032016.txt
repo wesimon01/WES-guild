@@ -1,0 +1,2 @@
+OrderNumber, CustomerName, State, TaxRate, productType, Area, CostFt2, LaborFt2, materialCost, laborCost, Tax, Total, date
+1,evan,OH,6.25,wood,5000,5.15,4.75,25750.00,23750.00,3093.75,52593.75,07/03/2016

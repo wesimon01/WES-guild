@@ -1,0 +1,21 @@
+﻿@model BlogEngine.Models.Blogpost
+
+<div class="row">
+    <div class="col-sm-12">        
+        <h3><a href="/Home/IndividualPost/@Model.PostId">@Model.Title</a></h3>
+        <p><span class="glyphicon glyphicon-time"></span>Date Published: @Model.datePublished.ToString("MM/dd/yyyy")</p>
+        <p>Written by @Model.Author.AuthorName</p>         
+        <div>
+            @Html.Raw(Model.Content)
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                @foreach (var tag in Model.Hashtags)
+                {
+                    <div>#@tag.HashtagName</div>
+                }
+            </div>
+        </div>
+        <hr />
+    </div>
+</div>

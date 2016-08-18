@@ -1,0 +1,25 @@
+﻿@model SGCorpHRportal.Models.Category
+
+@{
+    ViewBag.Title = "CategoryAdd";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Add Category</h3>
+        @Html.ActionLink("Return to Category List", "CategoryManage", "Admin")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("CategoryAdd", "Admin", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Category</label>
+                @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", placeholder = "" })
+                @Html.HiddenFor(m => m.CategoryId)
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>      

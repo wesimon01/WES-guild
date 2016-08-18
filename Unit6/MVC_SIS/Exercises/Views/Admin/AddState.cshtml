@@ -1,0 +1,27 @@
+﻿@model Exercises.Models.Data.State
+
+@{
+    ViewBag.Title = "AddState";
+}
+
+<h2>Add State</h2>
+
+<h3>@Html.ActionLink("Back to List", "Index", "Home")</h3>
+@*<h3><a href="/home/index">Back to List</a></h3>*@
+
+@using (Html.BeginForm("AddState", "Admin", FormMethod.Post))
+{
+    <p>
+        <label>State Abbreviation</label>
+        @Html.TextBoxFor(s => s.StateAbbreviation)
+    </p>
+
+    <p>
+        <label>State Name</label>
+        @Html.TextBoxFor(s => s.StateName)
+    </p>
+
+    <button>Save</button>
+}
+
+

@@ -1,0 +1,12 @@
+C:\_repos\evan-simon-individual-work\Unit7\loggertest\loggertest\bin\Debug\loggertest.exe.config
+C:\_repos\evan-simon-individual-work\Unit7\loggertest\loggertest\bin\Debug\loggertest.exe
+C:\_repos\evan-simon-individual-work\Unit7\loggertest\loggertest\bin\Debug\loggertest.pdb
+C:\_repos\evan-simon-individual-work\Unit7\loggertest\loggertest\obj\Debug\loggertest.csprojResolveAssemblyReference.cache
+C:\_repos\evan-simon-individual-work\Unit7\loggertest\loggertest\obj\Debug\loggertest.exe
+C:\_repos\evan-simon-individual-work\Unit7\loggertest\loggertest\obj\Debug\loggertest.pdb
+C:\_repos\evan-simon-individual-work\Unit8\loggertest\loggertest\bin\Debug\loggertest.exe.config
+C:\_repos\evan-simon-individual-work\Unit8\loggertest\loggertest\obj\Debug\loggertest.exe
+C:\_repos\evan-simon-individual-work\Unit8\loggertest\loggertest\obj\Debug\loggertest.pdb
+C:\_repos\evan-simon-individual-work\Unit8\loggertest\loggertest\bin\Debug\loggertest.exe
+C:\_repos\evan-simon-individual-work\Unit8\loggertest\loggertest\bin\Debug\loggertest.pdb
+C:\_repos\evan-simon-individual-work\Unit8\loggertest\loggertest\obj\Debug\loggertest.csprojResolveAssemblyReference.cache

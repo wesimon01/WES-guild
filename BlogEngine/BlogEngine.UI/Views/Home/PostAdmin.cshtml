@@ -1,0 +1,96 @@
+﻿@model List<BlogEngine.Models.Blogpost>
+@{
+    ViewBag.Title = "PostAdmin";
+}
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.Partial("_AdminMenu")
+    </div>
+    <div class="col-md-8">
+        <a href="/Home/CreatePost" class="btn btn-primary">Create New Post</a>
+        <h3>Awaiting Approval</h3>
+        @if (Model.Exists(p => p.IsApproved == false))
+        {
+        <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publish Date</th>
+                        <th>Expiration Date</th>
+                    </tr>
+                </thead>
+            <tbody>
+                @foreach (var post in Model)
+                {
+                    if(!post.IsApproved)
+                    {
+                        <tr class="clickable-row" data-type="post" data-id="@post.PostId">
+                            <td>@post.Title</td>
+                            @if (!string.IsNullOrEmpty(post.Author.AuthorName))
+                            {
+                                <td>@post.Author.AuthorName</td>
+                            }
+                            else
+                            {
+                                <td>---</td>
+                            }
+
+                            <td>@post.datePublished.ToString("MM/dd/yyyy")</td>
+                            <td>@post.dateExpires.ToString("MM/dd/yyyy")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        }
+        else
+        {
+            <p>None</p>
+        }
+        <h3>Approved Posts</h3>
+        @if (Model.Exists(p => p.IsApproved == true))
+        {
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publish Date</th>
+                <th>Expiration Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var post in Model)
+                {
+                    if (post.IsApproved)
+                    { 
+                        <tr class="clickable-row" data-type="post" data-id="@post.PostId">
+                            <td>@post.Title</td>
+                            @if (!string.IsNullOrEmpty(post.Author.AuthorName))
+                            {
+                                <td>@post.Author.AuthorName</td>
+                            }
+                            else
+                            {
+                                <td>---</td>
+                            }
+                            <td>@post.datePublished.ToString("MM/dd/yyyy")</td>
+                            <td>@post.dateExpires.ToString("MM/dd/yyyy")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        }
+        else
+        {
+        <p>None</p>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/dashboard.js"></script>
+    }

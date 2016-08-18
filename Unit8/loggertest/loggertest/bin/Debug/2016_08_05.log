@@ -1,0 +1,21 @@
+<LogEntry Date="2016-08-05 15:17:18" Severity="Info" Source="loggertest.Program.Main" ThreadId="9">
+  <Message>Test entry to see if logging works.</Message>
+</LogEntry>
+<LogEntry Date="2016-08-05 15:19:13" Severity="Info" Source="loggertest.Program.Main" ThreadId="9">
+  <Message>Test entry to see if logging works.</Message>
+</LogEntry>
+<LogEntry Date="2016-08-05 15:19:13" Severity="Info" Source="loggertest.Program.Main" ThreadId="9">
+  <Message>this is the foo</Message>
+</LogEntry>
+<LogEntry Date="2016-08-05 15:23:14" Severity="Exception" Source="loggertest.Program.Main" ThreadId="8">
+  <Exception Type="System.Exception" Source="loggertest.Program.Main">
+    <Message>I just threw this exception</Message>
+    <StackTrace>   at loggertest.Program.Main(String[] args) in C:\_repos\evan-simon-individual-work\Unit8\loggertest\loggertest\Program.cs:line 29</StackTrace>
+  </Exception>
+</LogEntry>
+<LogEntry Date="2016-08-05 15:38:37" Severity="Info" Source="loggertest.Program.Main" ThreadId="8">
+  <Message>Test entry to see if logging works.</Message>
+</LogEntry>
+<LogEntry Date="2016-08-05 15:38:37" Severity="Info" Source="loggertest.Program.Main" ThreadId="8">
+  <Message>this is the foo</Message>
+</LogEntry>

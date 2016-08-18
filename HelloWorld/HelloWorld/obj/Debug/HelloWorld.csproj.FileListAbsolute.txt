@@ -1,0 +1,7 @@
+C:\_repos\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe.config
+C:\_repos\evan-simon-individual-work\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe.config
+C:\_repos\evan-simon-individual-work\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe
+C:\_repos\evan-simon-individual-work\HelloWorld\HelloWorld\bin\Debug\HelloWorld.pdb
+C:\_repos\evan-simon-individual-work\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
+C:\_repos\evan-simon-individual-work\HelloWorld\HelloWorld\obj\Debug\HelloWorld.exe
+C:\_repos\evan-simon-individual-work\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb

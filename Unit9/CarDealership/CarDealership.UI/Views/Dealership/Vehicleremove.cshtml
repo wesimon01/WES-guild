@@ -1,0 +1,74 @@
+﻿
+@model CarDealership.UI.ViewModels.VehicleremoveVM
+
+@{
+    ViewBag.Title = "Vehicleremove";
+}
+
+<h3>Remove Vehicle</h3>
+
+<div class="row">
+    <table class="table table-bordered table-striped" id="">
+        <thead>
+            <tr>
+                <th>VehicleId</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Mileage</th>
+                <th>IsAvailable</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model._vehicles)
+            {
+                <tr >
+                    <td>@vehicle.VehicleId</td>
+                    <td>@vehicle.Make</td>
+                    <td>@vehicle.Model</td>
+                    <td>@vehicle.Year</td>
+                    <td>@vehicle.Mileage</td>
+                    <td>@vehicle.IsAvailable</td>
+                    <td>
+                        @*<button type="button" value="dvd.Id" class="btn btn-default btnDeleteDVD">Delete</button>*@
+                        @Html.ActionLink("Delete", "Vehicleremove", "Dealership", new { @class = "btn btn-primary btnDeleteVehicle", data_vehicleid = vehicle.VehicleId })
+                    </td>
+                </tr>
+                <tr></tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@section Scripts{
+    <script>
+
+        $(".btnDeleteVehicle").click(function (e) {
+            e.preventDefault();
+            if (confirm("Are you sure?")) {
+                var row = $(this).parent().parent();
+                var id = $(this).data("vehicleid");
+
+                $.ajax({
+                    url: "/api/Micro/" + id,
+                    method: "DELETE",
+                    success: function () {
+                        row.slideUp(300, function () {
+                            row.remove();
+                        })
+                    }
+                })
+                    .done(function (data) {
+                        alert("selected vehicle deleted");
+                    })
+
+                .fail(function (jq, status, error) {
+                    alert("broken");
+                });
+            }
+            });
+        
+    </script>
+
+}

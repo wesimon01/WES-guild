@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<body style="background-color: cadetblue">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("SG Autos Home", "Index", "Dealership", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN OPTIONS<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Add a Vehicle", "Vehicleadd", "Dealership")</li>
+                            <li>@Html.ActionLink("Remove a Vehicle", "Vehicleremove", "Dealership")</li>
+                            <li>@Html.ActionLink("List of Info Requests", "Inforequestlist", "Dealership")</li>
+                            <li>@Html.ActionLink("Update Request Status", "Inforequestupdate", "Dealership")</li>                           
+                        </ul>
+                       
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GUEST OPTIONS<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("View Vehicle List", "Vehiclelist", "Dealership")</li>
+                            <li>@Html.ActionLink("See Vehicle Details", "Vehicledisplay", "Dealership")</li>
+                            <li>@Html.ActionLink("Submit Info Request", "Inforequestadd", "Dealership")</li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <footer>
+       <br /><br /><br /> <br /><br /><br /><br /><br /><br />
+        <hr />
+        <div class="row" style="padding-left:80px">
+            <div class="col-xs-12">&copy; @DateTime.Now.Year - SG INC.</div>
+        </div>
+        <hr />
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

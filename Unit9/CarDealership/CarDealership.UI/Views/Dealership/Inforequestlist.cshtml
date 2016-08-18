@@ -1,0 +1,50 @@
+﻿@model List<CarDealership.Models.InfoRequest>
+
+@{
+    ViewBag.Title = "Inforequestlist";
+}
+
+<h3>InfoRequest List</h3>
+
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Info<br />RequestId</th>
+                <th>VehicleId</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone#</th>
+                <th>Time<br />ToCall</th>
+                <th>Contact<br />Method</th>
+                <th>Purchase<br /> Time<br /> Frame</th>
+                <th>Additional<br />Info</th>
+                <th>Last<br />Contact<br />Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var inforequest in Model)
+            {
+                //if (dvd.IsBorrowed != true)
+                {
+                    <tr>
+                        <td> @inforequest.InfoRequestId </td>
+                        <td> @inforequest.VehicleId </td>
+                        <td> @inforequest.PersonName </td>
+                        <td> @inforequest.EmailAddress </td>
+                        <td> @inforequest.PhoneNumber </td>
+                        <td> @inforequest.TimetoCall </td>
+                        <td> @inforequest.ContactMethod </td>
+                        <td> @inforequest.PurchaseTimeFrame </td>
+                        <td> @inforequest.AdditionalInfo </td>
+                        <td> @inforequest.LastContactDate.ToString("MM/dd/yyyy")</td>
+                        <td> @inforequest.Status</td>
+                    </tr>
+                    <tr></tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

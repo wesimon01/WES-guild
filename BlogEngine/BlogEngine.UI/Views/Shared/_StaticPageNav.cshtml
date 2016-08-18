@@ -1,0 +1,6 @@
+﻿@model List<BlogEngine.Models.Page>
+
+@foreach(var page in Model)
+{
+    <li><a href="/Home/StaticPage/@page.PageId">@page.Title</a></li>
+}

@@ -1,0 +1,14 @@
+C:\_repos\louisvilledotnetmay2016materials\SGBank\SGBank.Data\bin\Debug\SGBank.Data.dll
+C:\_repos\louisvilledotnetmay2016materials\SGBank\SGBank.Data\bin\Debug\SGBank.Data.pdb
+C:\_repos\louisvilledotnetmay2016materials\SGBank\SGBank.Data\bin\Debug\SGBank.Models.dll
+C:\_repos\louisvilledotnetmay2016materials\SGBank\SGBank.Data\bin\Debug\SGBank.Models.pdb
+C:\_repos\louisvilledotnetmay2016materials\SGBank\SGBank.Data\obj\Debug\SGBank.Data.csprojResolveAssemblyReference.cache
+C:\_repos\louisvilledotnetmay2016materials\SGBank\SGBank.Data\obj\Debug\SGBank.Data.dll
+C:\_repos\louisvilledotnetmay2016materials\SGBank\SGBank.Data\obj\Debug\SGBank.Data.pdb
+C:\_repos\evan-simon-individual-work\Unit4\SGBank\SGBank.Data\bin\Debug\SGBank.Data.dll
+C:\_repos\evan-simon-individual-work\Unit4\SGBank\SGBank.Data\bin\Debug\SGBank.Data.pdb
+C:\_repos\evan-simon-individual-work\Unit4\SGBank\SGBank.Data\bin\Debug\SGBank.Models.dll
+C:\_repos\evan-simon-individual-work\Unit4\SGBank\SGBank.Data\bin\Debug\SGBank.Models.pdb
+C:\_repos\evan-simon-individual-work\Unit4\SGBank\SGBank.Data\obj\Debug\SGBank.Data.csprojResolveAssemblyReference.cache
+C:\_repos\evan-simon-individual-work\Unit4\SGBank\SGBank.Data\obj\Debug\SGBank.Data.dll
+C:\_repos\evan-simon-individual-work\Unit4\SGBank\SGBank.Data\obj\Debug\SGBank.Data.pdb
