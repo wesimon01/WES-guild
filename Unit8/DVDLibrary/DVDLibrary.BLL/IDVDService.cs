@@ -6,10 +6,11 @@ namespace DVDLibrary.BLL
     public interface IDVDService
     {
         void AddDVD(DVD dvd);
-        DVD DVDObjectCreate();
+        void EditDVD(DVD dvd);
+        void RemoveDVD(int DVDId);
         DVD GetDVD(int dvdId);
         DVD GetDVDbyTitle(string title);
-        List<DVD> GetDVDlist();
-        void RemoveDVD(int DVDId);
+        IEnumerable<DVD> GetDVDlist();
+        IEnumerable<Borrower> GetBorrowerList(int id);               
     }
 }

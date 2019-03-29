@@ -24,7 +24,7 @@ namespace BlogEngine.UI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("BlogEngine", throwIfV1Schema: false)
         {
         }
 

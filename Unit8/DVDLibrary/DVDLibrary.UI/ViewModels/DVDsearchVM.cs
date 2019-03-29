@@ -10,17 +10,8 @@ namespace DVDLibrary.UI.ViewModels
 {
     public class DVDsearchVM
     {
-        private IDVDService _service;
         public int _selectedDVDId { get; set; }
-        public List<DVD> _dvds { get; set; }
-        public DVD _dvd { get; set; }
-
-
-        public DVDsearchVM(IDVDService service)
-        {
-            _service = service;
-            _dvds = _service.GetDVDlist();
-        }
-
+        public IEnumerable<DVD> DVDs { get; set; }
+        public DVD DVD { get; set; }
     }
 }

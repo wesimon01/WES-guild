@@ -11,7 +11,7 @@ namespace DVDLibrary.Data
     {
         private static List<DVD> _DVDs;
         private static List<Borrower> _borrowers;
-
+      
         public DVDRepository()
         {
             if (_borrowers == null)
@@ -38,7 +38,7 @@ namespace DVDLibrary.Data
                     Id = 1,
                     Title = "Tesla",
                     ReleaseDate =  new DateTime(2016,6,1),
-                    Rating = MPAARating.R,
+                    MPAARating = MPAARating.R,
                     DirectorName = "Goat",
                     Studio = "MGM",
                     UserRating = 10.0M,
@@ -50,7 +50,7 @@ namespace DVDLibrary.Data
                     Id = 2,
                     Title = "PlanetEarth",
                     ReleaseDate =  new DateTime(2016,4,1),
-                    Rating = MPAARating.PG,
+                    MPAARating = MPAARating.PG,
                     DirectorName = "Goat",
                     Studio = "BBC",
                     UserRating = 10.0M,
@@ -62,7 +62,7 @@ namespace DVDLibrary.Data
                     Id = 3,
                     Title = "PlanetGoat",
                     ReleaseDate =  new DateTime(2016,1,1),
-                    Rating = MPAARating.NC_17,
+                    MPAARating = MPAARating.NC_17,
                     DirectorName = "Goat",
                     Studio = "WarnerBros",
                     UserRating = 10.0M,
@@ -74,7 +74,7 @@ namespace DVDLibrary.Data
                     Id = 4,
                     Title = "RoadWarrior",
                     ReleaseDate =  new DateTime(2010,3,1),
-                    Rating = MPAARating.PG,
+                    MPAARating = MPAARating.PG,
                     DirectorName = "Goat",
                     Studio = "Fox",
                     UserRating = 5.0M ,
@@ -83,7 +83,7 @@ namespace DVDLibrary.Data
                     BorrowerList = GetBorrowerList(4),
                  },
         };
-     }          
+     }
  }
 
         public List<DVD> GetAll()
@@ -131,6 +131,11 @@ namespace DVDLibrary.Data
         public List<Borrower> GetAllBorrowers()
         {
             return _borrowers;
+        }
+
+        public void EditDVD(DVD dvd)
+        {
+            throw new NotImplementedException();
         }
     }
 }

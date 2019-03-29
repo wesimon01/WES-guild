@@ -1,0 +1,6 @@
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRportal.Models\bin\Debug\SGCorpHRportal.Models.dll
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRportal.Models\bin\Debug\SGCorpHRportal.Models.pdb
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRportal.Models\obj\Debug\SGCorpHRportal.Models.csprojAssemblyReference.cache
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRportal.Models\obj\Debug\SGCorpHRportal.Models.csproj.CoreCompileInputs.cache
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRportal.Models\obj\Debug\SGCorpHRportal.Models.dll
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRportal.Models\obj\Debug\SGCorpHRportal.Models.pdb

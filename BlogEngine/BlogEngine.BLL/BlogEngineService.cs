@@ -19,16 +19,13 @@ namespace BlogEngine.BLL
             _pagerepo = pagerepo;
         }
 
-
-        //BlogPost methods
+        //***** BlogPost methods *****
 
         public List<Blogpost> GetAllBlogPosts()  
         {
-            try
-            {
+            try {
                 return _blogrepo.GetAllBlogPosts();
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -39,11 +36,9 @@ namespace BlogEngine.BLL
 
         public Blogpost GetBlogPost(int postId)  
         {
-            try
-            {
+            try {
                 return _blogrepo.GetBlogPost(postId);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -54,11 +49,9 @@ namespace BlogEngine.BLL
 
         public List<Blogpost> GetPostsbyHashTag(Hashtag hashtag)
         {
-            try
-            {
-               return _blogrepo.GetPostsbyHashTag(hashtag);
+            try {
+                return _blogrepo.GetPostsbyHashTag(hashtag);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -69,26 +62,22 @@ namespace BlogEngine.BLL
 
         public List<Blogpost> GetPostsbyHashTagName(string hashtagName)
         {
-            try
-            {
+            try {
                 return _blogrepo.GetPostsbyHashTagName(hashtagName);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
                 SimpleLog.Log(ex);
-                throw new ApplicationException("Something went wrong in the GetPostsbyHashTag service module :", ex);
+                throw new ApplicationException("Something went wrong in the GetPostsbyHashTagName service module :", ex);
             }
         }
 
         public void AddBlogPost(Blogpost post)  
         {
-            try
-            {
+            try {
                 _blogrepo.AddBlogPost(post);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -99,11 +88,9 @@ namespace BlogEngine.BLL
 
         public void RemoveBlogPost(int postId)  
         {
-            try
-            {
+            try {
                 _blogrepo.RemoveBlogPost(postId);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -114,11 +101,9 @@ namespace BlogEngine.BLL
 
         public void UpdateBlogPost(Blogpost post)  
         {
-            try
-            {
+            try {
                 _blogrepo.UpdateBlogPost(post);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -129,31 +114,24 @@ namespace BlogEngine.BLL
 
         public List<Hashtag> GetAllHashTags()
         {
-            try
-            {
+            try {
                 return _blogrepo.GetAllHashTags();
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
                 SimpleLog.Log(ex);
-                throw new ApplicationException("Something went wrong in the UpdateBlogPost service module :", ex);
-               
+                throw new ApplicationException("Something went wrong in the GetAllHashTags service module :", ex);               
             }
         }
 
-    
-
-        //Page Methods
+        //***** Page Methods *****
 
         public List<Page> GetAllPages()  
         {
-            try
-            {
+            try {
                 return _pagerepo.GetAllPages();
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -164,11 +142,9 @@ namespace BlogEngine.BLL
 
         public Page GetPage(int pageId)  
         {
-            try
-            {
+            try {
                 return _pagerepo.GetPage(pageId);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -179,11 +155,9 @@ namespace BlogEngine.BLL
 
         public void AddPage(Page page)
         {
-            try
-            {
+            try {
                 _pagerepo.AddPage(page);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -194,11 +168,9 @@ namespace BlogEngine.BLL
 
         public void RemovePage(int pageId)
         {
-            try
-            {
+            try {
                 _pagerepo.RemovePage(pageId);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -209,11 +181,9 @@ namespace BlogEngine.BLL
 
         public void UpdatePage(Page page)
         {
-            try
-            {
+            try {
                 _pagerepo.UpdatePage(page);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
@@ -227,15 +197,14 @@ namespace BlogEngine.BLL
         {
             var hashtag = new Hashtag { HashtagId = id };
             List<Blogpost> posts;
-            try
-            {
+            try {
                 posts = _blogrepo.GetPostsbyHashTag(hashtag);
             }
             catch (Exception ex)
             {
                 SimpleLog.StartLogging();
                 SimpleLog.Log(ex);
-                throw new ApplicationException("Something went wrong in the UpdatePage service module :", ex);
+                throw new ApplicationException("Something went wrong in the GetPostsbyHashTagId service module :", ex);
             }
             return posts;
         }

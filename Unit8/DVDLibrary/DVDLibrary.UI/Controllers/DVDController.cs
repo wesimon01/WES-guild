@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DVDLibrary.Models;
 using DVDLibrary.BLL;
 using DVDLibrary.UI.ViewModels;
+using DVDLibrary.UI.Util;
 
 namespace DVDLibrary.UI
 {
@@ -37,86 +38,115 @@ namespace DVDLibrary.UI
 
         [HttpGet]
         public ActionResult DVDadd()
-        {
-            
-           return View(_service.DVDObjectCreate());
+        {            
+           return View(new DVDAddVM());
         }
 
         [HttpPost]
-        public ActionResult DVDadd(DVD dvd)
+        public ActionResult DVDadd(DVDAddVM viewModel)
         {
             if (ModelState.IsValid)
             {
-                _service.AddDVD(dvd);
+                _service.AddDVD(viewModel.DVD);
                 return RedirectToAction("DVDlist", "DVD");
             }
-            return View(dvd);
+            return View(viewModel);
         }
+
+        [HttpGet]
+        public ActionResult DVDEdit(int id)
+        {
+            var viewModel = new DVDEditVM();
+            viewModel.DVD = _service.GetDVD(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult DVDEdit(DVDEditVM viewmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                _service.EditDVD(viewmodel.DVD);
+                return RedirectToAction("DVDlist", "DVD");
+            }
+            return View(viewmodel);
+        }
+
 
         [HttpGet]
         public ActionResult DVDdisplay(int? selectedDVDId)
         {
+            var viewModel = new DVDdisplayVM();
             if (selectedDVDId == null || selectedDVDId == 0 || _service.GetDVD(selectedDVDId.Value) == null)
             {
-                return View(new DVDdisplayVM(_service));
+                viewModel.DVDs = _service.GetDVDlist();
+                viewModel.DVDItems = Utilities.SetDVDItems(viewModel.DVDs);
+                return View(viewModel);
             }
-
             else
             {
-                DVDdisplayVM viewmodel = new DVDdisplayVM(_service);
-                viewmodel._selectedDVDId = selectedDVDId.Value;
-                return View(viewmodel);
-            }
-        }
-
-        [HttpGet]
-        public ActionResult DVDremove()
-        {
-            return View(new DVDremoveVM(_service));
-
-        }
-
-        [HttpPost]
-        public ActionResult DVDremove(int? dvdId)
-        {
-            if (ModelState.IsValid && dvdId != null)
-            {
-                _service.RemoveDVD(dvdId.Value);
-                return RedirectToAction("DVDremove");
-            }
-            return RedirectToAction("DVDremove");
-        }
-
-        [HttpGet]
-        public ActionResult DVDsearch(int? selectedDVDId)
-        {
-            if (selectedDVDId == null || selectedDVDId == 0 || _service.GetDVD(selectedDVDId.Value) == null)
-            {
-                return View(new DVDsearchVM(_service));
-            }
-
-            else
-            {
-                DVDsearchVM viewmodel = new DVDsearchVM(_service);
-                viewmodel._selectedDVDId = selectedDVDId.Value;
-                return View(viewmodel);
+                viewModel.DVDs = _service.GetDVDlist();
+                viewModel.DVDItems = Utilities.SetDVDItems(viewModel.DVDs);
+                viewModel.selectedDVD = viewModel.DVDs.Where(d => d.Id == selectedDVDId).FirstOrDefault();
+                viewModel.dvdId = viewModel.selectedDVD.Id;
+                return View(viewModel);
             }
         }
 
         [HttpGet]
         public ActionResult DVDhistory(int? selectedDVDId)
         {
+            var viewModel = new DVDhistoryVM();
             if (selectedDVDId == null || selectedDVDId == 0 || _service.GetDVD(selectedDVDId.Value) == null)
             {
-                return View(new DVDhistoryVM(_service));
+                viewModel.DVDs = _service.GetDVDlist();
+                viewModel.DVDItems = Utilities.SetDVDItems(viewModel.DVDs);
+                return View(viewModel);
             }
-
             else
             {
-                DVDhistoryVM viewmodel = new DVDhistoryVM(_service);
-                viewmodel._selectedDVDId = selectedDVDId.Value;
-                return View(viewmodel);
+                viewModel.DVDs = _service.GetDVDlist();
+                viewModel.DVDItems = Utilities.SetDVDItems(viewModel.DVDs);
+                viewModel.selectedDVD = viewModel.DVDs.Where(d => d.Id == selectedDVDId).FirstOrDefault();
+                viewModel.dvdId = viewModel.selectedDVD.Id;
+                viewModel.selectedDVD.BorrowerList = _service.GetBorrowerList(viewModel.selectedDVD.Id);
+                return View(viewModel);
             }
+        }
+
+        [HttpGet]
+        public ActionResult DVDsearch(int? selectedDVDId)
+        {
+            var viewModel = new DVDsearchVM();
+            if (selectedDVDId == null || selectedDVDId == 0 || _service.GetDVD(selectedDVDId.Value) == null)
+            {
+                viewModel.DVDs = _service.GetDVDlist();
+                return View(viewModel);
+            }
+            else
+            {
+                viewModel.DVDs = _service.GetDVDlist();
+                viewModel._selectedDVDId = selectedDVDId.Value;
+                return View(viewModel);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult DVDremove()
+        {           
+            var viewModel = _service.GetDVDlist();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult DVDremove(int? dvdId)
+        {
+            if (dvdId != null)
+            {
+                _service.RemoveDVD(dvdId.Value);
+                return RedirectToAction("DVDremove");
+            }
+            return RedirectToAction("DVDremove");
         }
 
     }

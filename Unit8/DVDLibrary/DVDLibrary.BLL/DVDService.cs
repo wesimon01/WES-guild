@@ -6,25 +6,29 @@ using System.Threading.Tasks;
 using DVDLibrary.Data;
 using DVDLibrary.Models;
 using System.Configuration;
+using System.IO;
 
 namespace DVDLibrary.BLL
 {
     public class DVDService : IDVDService
     {
         private IDVDRepository _repo;
-            
+        DirectoryInfo _dirInfo = new DirectoryInfo(@"C:\Users\plutonium\desktop\SimpleLog\DVDLibrary");
+
+        private void SetLoggingDir() =>
+            SimpleLog.SetLogDir(_dirInfo.FullName, true);
+
         public DVDService(IDVDRepository repo) 
         {
             _repo = repo;
+            SetLoggingDir();     
         }
-
-        public List<DVD> GetDVDlist()  //method
+                  
+        public IEnumerable<DVD> GetDVDlist()  
         {
-            try
-            {
+            try {
                 return _repo.GetAll();
             }
-
             catch (Exception ex)
             {
                 SimpleLog.Log(ex);
@@ -32,32 +36,23 @@ namespace DVDLibrary.BLL
             }
         }
 
-        public DVD GetDVD(int dvdId)  //method
+        public DVD GetDVD(int dvdId)  
         { 
             try {
-
                 return _repo.Get(dvdId); 
             }
-
             catch (Exception ex)
             {
                 SimpleLog.Log(ex);
                 throw new ApplicationException("Something went wrong in the GetDVD service module :", ex);
             }
         }
-
-        public DVD DVDObjectCreate()   //method
-        {
-            return (new DVD()); 
-        }
-      
-        public void RemoveDVD(int DVDId)  //method
+           
+        public void RemoveDVD(int DVDId)  
         {
             try {
-
                 _repo.RemoveDVD(DVDId); 
             }
-
             catch (Exception ex)
             {
                 SimpleLog.Log(ex);
@@ -65,13 +60,11 @@ namespace DVDLibrary.BLL
             }
         }
 
-        public void AddDVD(DVD dvd)  //method
+        public void AddDVD(DVD dvd)
         {
-            try
-            {
+            try {
                 _repo.AddDVD(dvd); 
             }
-
             catch (Exception ex)
             {
                 SimpleLog.Log(ex);
@@ -79,13 +72,11 @@ namespace DVDLibrary.BLL
             }
         }
 
-        public DVD GetDVDbyTitle(string title)  //method
+        public DVD GetDVDbyTitle(string title)  
         {
-            try {
-
+            try {                
                 return _repo.GetbyTitle(title);
             }
-
             catch (Exception ex)
             {
                 SimpleLog.Log(ex);
@@ -93,6 +84,29 @@ namespace DVDLibrary.BLL
             }
         }
 
+        public IEnumerable<Borrower> GetBorrowerList(int dvdId)
+        {
+            try {
+                return _repo.GetBorrowerList(dvdId);
+            }
+            catch (Exception ex)
+            {
+                SimpleLog.Log(ex);
+                throw new ApplicationException("Something went wrong in the GetDVDbyTitle service module :", ex);
+            }
+        }
+
+        public void EditDVD(DVD dvd)
+        {
+            try {
+                _repo.EditDVD(dvd);
+            }
+            catch (Exception ex)
+            {
+                SimpleLog.Log(ex);
+                throw new ApplicationException("Something went wrong in the EditDVD service module :", ex);
+            }
+        }
     }
 }
 

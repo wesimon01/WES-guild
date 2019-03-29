@@ -4,13 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SGCorpHRportal.Models;
-using SGCorpHRportal.Models.Repos;
-using SGCorpHRportal.Models.ViewModels;
+using SGCorpHRportal.UI.Models.ViewModels;
+using SGCorpHRPortal.Data.Factory;
+using SGCorpHRPortal.Data.Interfaces;
 
-namespace SGCorpHRportal.Controllers
+namespace SGCorpHRportal.UI.Controllers
 {
     public class AdminController : Controller
-    {   
+    {
+        private ICategoryRepository categoryRepo;
+        private IPolicyRepository policyRepo;
+
+        public AdminController()
+        {
+            policyRepo = PolicyRepositoryFactory.GetRepository();
+            categoryRepo = CategoryRepositoryFactory.GetRepository();
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -25,48 +35,44 @@ namespace SGCorpHRportal.Controllers
         [HttpPost]
         public ActionResult CategoryAdd(Category category)
         {
-            CategoryRepository.Add(category);
-            IEnumerable<Category> repo = CategoryRepository.GetAll();
-            return View("CategoryManage", repo);
+            categoryRepo.Add(category);
+            IEnumerable<Category> categories = categoryRepo.GetAll();
+            return View("CategoryManage", categories);
         }
 
         [HttpGet]
         public ActionResult CategoryManage()
         {
-            IEnumerable<Category> CatList = CategoryRepository.GetAll();
+            IEnumerable<Category> CatList = categoryRepo.GetAll();
             return View(CatList);
         }
 
-        [HttpGet]
-        public ActionResult CategoryDelete(int CategoryId)
-        {
-            Category selectedCategory = CategoryRepository.Get(CategoryId);
-            return View(selectedCategory);
-        }
+        //[HttpGet]
+        //public ActionResult CategoryDelete(int CategoryId)
+        //{
+        //    Category selectedCategory = CategoryRepository.Get(CategoryId);
+        //    return View(selectedCategory);
+        //}
 
         [HttpPost]
         public ActionResult CategoryDelete(Category selectedCategory)
         {
-            CategoryRepository.Delete(selectedCategory.CategoryName);
+
+            categoryRepo.Delete(selectedCategory.CategoryName);
             return RedirectToAction("CategoryManage");
         }
-
-
-
-
-
 
         [HttpGet]
         public ActionResult PolicyList(string CategoryName)
         {
             if (CategoryName == null || CategoryName == "")
             {
-                IEnumerable<Policy> polList = PolicyRepository.GetAll();
+                IEnumerable<Policy> polList = policyRepo.GetAll();
                 return View(polList);
             }
             else
             {
-                IEnumerable<Policy> policyList = PolicyRepository.GetbyCat(CategoryName);
+                IEnumerable<Policy> policyList = policyRepo.GetbyCat(CategoryName);
                 return View(policyList);
             }
         }
@@ -75,7 +81,7 @@ namespace SGCorpHRportal.Controllers
         public ActionResult PolicyContent(int PolicyId)
         {
 
-            Policy selectedPolicy = PolicyRepository.Get(PolicyId);
+            Policy selectedPolicy = policyRepo.Get(PolicyId);
             return View(selectedPolicy);
         }
 
@@ -88,8 +94,8 @@ namespace SGCorpHRportal.Controllers
         [HttpPost]
         public ActionResult PolicyAdd(PolAddVM poladdvm)
         {
-            poladdvm.policy.Category = CategoryRepository.Get(poladdvm.policy.Category.CategoryId);
-            PolicyRepository.Add(poladdvm.policy);
+            poladdvm.policy.Category = categoryRepo.Get(poladdvm.policy.Category.CategoryId);
+            policyRepo.Add(poladdvm.policy);
 
             return RedirectToAction("PolicyList");
         }
@@ -99,27 +105,27 @@ namespace SGCorpHRportal.Controllers
         {
             if (CategoryName == null || CategoryName == "")
             {
-                IEnumerable<Policy> polList = PolicyRepository.GetAll();
+                IEnumerable<Policy> polList = policyRepo.GetAll();
                 return View(polList);
             }
             else
             {
-                IEnumerable<Policy> policyList = PolicyRepository.GetbyCat(CategoryName);
+                IEnumerable<Policy> policyList = policyRepo.GetbyCat(CategoryName);
                 return View(policyList);
             }
         }
 
         [HttpGet]
-        public ActionResult PolicyDelete(int PolicyId)
+        public ActionResult PolicyDelete(int policyId)
         {
-            Policy selectedPolicy = PolicyRepository.Get(PolicyId);
+            Policy selectedPolicy = policyRepo.Get(policyId);
             return View(selectedPolicy);
         }
 
         [HttpPost]
         public ActionResult PolicyDelete(Policy selectedPolicy)
         {
-            PolicyRepository.Delete(selectedPolicy.PolicyName, selectedPolicy.PolicyId);
+            policyRepo.Delete(selectedPolicy.PolicyName, selectedPolicy.PolicyId);
             return RedirectToAction("PolicyManage");
         }
 

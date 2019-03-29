@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace SGCorpHRportal
+namespace SGCorpHRportal.UI
 {
     public class RouteConfig
     {

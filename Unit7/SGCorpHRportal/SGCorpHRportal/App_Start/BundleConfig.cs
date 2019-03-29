@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace SGCorpHRportal
+namespace SGCorpHRportal.UI
 {
     public class BundleConfig
     {

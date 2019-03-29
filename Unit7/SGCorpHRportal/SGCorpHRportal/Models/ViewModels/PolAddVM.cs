@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SGCorpHRportal.Models.Repos;
+using SGCorpHRportal.Models;
 using System.Web.Mvc;
 
-namespace SGCorpHRportal.Models.ViewModels
+namespace SGCorpHRportal.UI.Models.ViewModels
 {
     public class PolAddVM
     {      

@@ -17,7 +17,6 @@ namespace BlogEngine.Tests
         public void CanGetAllPages()
         {
             var svc = new BlogEngineService(new BlogpostTestRepository(), new PageTestRepository());
-
             var result = svc.GetAllPages().Count;
 
             Assert.AreEqual(4, result);
@@ -27,7 +26,6 @@ namespace BlogEngine.Tests
         public void CanGetPage()
         {
             var svc = new BlogEngineService(new BlogpostTestRepository(), new PageTestRepository());
-
             var result = svc.GetPage(1).Title;
 
             Assert.AreEqual("Biography", result);
@@ -80,6 +78,7 @@ namespace BlogEngine.Tests
             var actual = svc.GetPage(1);
 
             Assert.AreEqual("Dirt", actual.Title);
+            Assert.AreEqual("Synth mumblecore brunch narwhal thundercats", actual.Content);
         }
 
         // Post tests
@@ -87,19 +86,17 @@ namespace BlogEngine.Tests
         public void CanGetBlogpost()
         {
             var svc = new BlogEngineService(new BlogpostTestRepository(), new PageTestRepository());
-
             var blogpost = svc.GetBlogPost(1);
 
             Assert.AreEqual(1, blogpost.PostId);
             Assert.AreEqual("Lorem ipsum dolor sit amet", blogpost.Title);
-            Assert.AreEqual(true, blogpost.IsApproved);
+            Assert.IsTrue(blogpost.IsApproved);
         }
 
         [Test]
         public void CanGetAllBlogPosts()
         {
             var svc = new BlogEngineService(new BlogpostTestRepository(), new PageTestRepository());
-
             var posts = svc.GetAllBlogPosts();
 
             Assert.AreEqual(4, posts.Count());
@@ -130,7 +127,6 @@ namespace BlogEngine.Tests
         public void CanGetAllHashTags()
         {
             var svc = new BlogEngineService(new BlogpostTestRepository(), new PageTestRepository());
-
             var hashtags = svc.GetAllHashTags();
 
             Assert.AreEqual(3, hashtags.Distinct().Count());
@@ -155,7 +151,6 @@ namespace BlogEngine.Tests
         public void CanGetPostsbyHashTag()
         {
             var svc = new BlogEngineService(new BlogpostTestRepository(), new PageTestRepository());
-
             var result = svc.GetPostsbyHashTag(new Hashtag { HashtagId = 2 }).Count;
 
             Assert.AreEqual(2, result);
@@ -165,7 +160,6 @@ namespace BlogEngine.Tests
         public void CanGetPostsbyHashTagName()
         {
             var svc = new BlogEngineService(new BlogpostTestRepository(), new PageTestRepository());
-
             var result = svc.GetPostsbyHashTagName("Drinks").Count;
 
             Assert.AreEqual(2, result);

@@ -13,49 +13,43 @@ namespace BlogEngine.Data
     {
         public List<Page> GetAllPages()
         {
-            List<Page> pages = new List<Page>();
-
-            using (SqlConnection cxn = new SqlConnection(Settings.ConnectionString))
+            var pages = new List<Page>();
+            using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand();
-
-                cmd.CommandText = "PageGetAll";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-                cxn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
+                using (var cmd = new SqlCommand("PageGetAll", cxn))
+                {                    
+                    cmd.CommandType = CommandType.StoredProcedure;                    
+                    cxn.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        pages.Add(PopulatePageFromDataReader(dr));
+                        while (dr.Read())
+                        {
+                            pages.Add(PopulatePageFromDataReader(dr));
+                        }
                     }
-                }
+                }               
             }
             return pages;
         }
 
         public Page GetPage(int pageId)
         {
-            Page page = new Page();
-
+            var page = new Page();
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
-
-                cmd.CommandText = "PageGetByID";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@PageID", pageId);
-                cmd.Connection = cxn;
-                cxn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
+                using (var cmd = new SqlCommand("PageGetByID", cxn))
+                {                  
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PageID", pageId);                    
+                    cxn.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        page = PopulatePageFromDataReader(dr);
+                        while (dr.Read())
+                        {
+                            page = PopulatePageFromDataReader(dr);
+                        }
                     }
-                }
+                }               
             }
             return page;
         }
@@ -64,19 +58,17 @@ namespace BlogEngine.Data
         {
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
+                using (var cmd = new SqlCommand("PageInsert", cxn))
+                {                                      
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.CommandText = "PageInsert";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
+                    if (page.Title != null)
+                        cmd.Parameters.AddWithValue("@Title", page.Title);
+                    cmd.Parameters.AddWithValue("@PageContent", page.Content);
 
-                if (page.Title != null)
-                cmd.Parameters.AddWithValue("@Title", page.Title);
-                cmd.Parameters.AddWithValue("@PageContent", page.Content);
-
-                cxn.Open();
-                cmd.ExecuteNonQuery();
-                cxn.Close();
+                    cxn.Open();
+                    cmd.ExecuteNonQuery();                    
+                }               
             }
         }
 
@@ -84,17 +76,15 @@ namespace BlogEngine.Data
         {
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
+                using (var cmd = new SqlCommand("PageDelete", cxn))
+                {                    
+                    cmd.CommandType = CommandType.StoredProcedure;                   
+                    cmd.Parameters.AddWithValue("@PageID", pageId);
 
-                cmd.CommandText = "PageDelete";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-                cmd.Parameters.AddWithValue("@PageID", pageId);
-
-                cxn.Open();
-                cmd.ExecuteNonQuery();
-                cxn.Close();
-                //return (int)cmd.ExecuteScalar();
+                    cxn.Open();
+                    cmd.ExecuteNonQuery();                    
+                    //return (int)cmd.ExecuteScalar();
+                }
             }
         }
 
@@ -102,24 +92,22 @@ namespace BlogEngine.Data
         {
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
+                using (var cmd = new SqlCommand("PageUpdate", cxn))
+                {                    
+                    cmd.CommandType = CommandType.StoredProcedure;                    
+                    cmd.Parameters.AddWithValue("@PageID", page.PageId);
+                    cmd.Parameters.AddWithValue("@Title", page.Title);
+                    cmd.Parameters.AddWithValue("@PageContent", page.Content);
 
-                cmd.CommandText = "PageUpdate";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-                cmd.Parameters.AddWithValue("@PageID", page.PageId);
-                cmd.Parameters.AddWithValue("@Title", page.Title);
-                cmd.Parameters.AddWithValue("@PageContent", page.Content);
-
-                cxn.Open();
-                cmd.ExecuteNonQuery();
-                cxn.Close();
+                    cxn.Open();
+                    cmd.ExecuteNonQuery();                   
+                }                
             }
         }
 
         private Page PopulatePageFromDataReader(SqlDataReader dr)
         {
-            Page page = new Page();
+            var page = new Page();
             page.PageId = (int)dr["PageID"];
             page.Title = dr["Title"].ToString();
             

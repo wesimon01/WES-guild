@@ -18,25 +18,25 @@ namespace BlogEngine.Data
                 _pages = new List<Page>()
             {
 
-            new Page{
+            new Page {
             PageId = 1,
             Title = "Biography",
             Content = "Synth mumblecore brunch narwhal thundercats",                
             },
 
-            new Page{
+            new Page {
             PageId = 2,
             Title = "AboutUS",
             Content = "Synth mumblecore brunch narwhal thundercats",
             },
 
-            new Page{
+            new Page {
             PageId = 3,
             Title = "MumbleCore",
             Content = "Synth mumblecore brunch narwhal thundercats",
             },
             
-            new Page{
+            new Page {
             PageId = 4,
             Title = "AutoBiography",
             Content = "Synth mumblecore brunch narwhal thundercats",
@@ -70,10 +70,8 @@ namespace BlogEngine.Data
         {
             Page selectedpage = _pages.FirstOrDefault(p => p.PageId == pageId);
 
-            if (selectedpage != null)
-            {
-                _pages.RemoveAll(p => p.PageId == selectedpage.PageId);
-            }
+            if (selectedpage != null)           
+                _pages.RemoveAll(p => p.PageId == selectedpage.PageId);            
         }
 
         public void UpdatePage(Page page)
@@ -81,9 +79,8 @@ namespace BlogEngine.Data
             Page pageToUpdate = GetPage(page.PageId);
 
             pageToUpdate.Title = page.Title;            
-            pageToUpdate.Content = page.Content;      
-            
-        
+            pageToUpdate.Content = page.Content;              
         }
+
     }
 }

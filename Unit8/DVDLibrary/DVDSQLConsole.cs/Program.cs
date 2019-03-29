@@ -29,7 +29,7 @@ namespace DVDSQLConsole.cs
             Console.WriteLine(dvd.Id);
             Console.WriteLine(dvd.Title);
             Console.WriteLine(dvd.ReleaseDate.ToString("MM/dd/yyyy"));
-            Console.WriteLine(dvd.Rating.ToString());
+            Console.WriteLine(dvd.MPAARating.ToString());
             Console.WriteLine(dvd.DirectorName);
             Console.WriteLine(dvd.Studio);
             Console.WriteLine(dvd.UserRating);
@@ -46,7 +46,7 @@ namespace DVDSQLConsole.cs
             Console.WriteLine("-------------");
             foreach (DVD d in repo.GetAll())
             {
-                Console.WriteLine("{0:D2} {1,-17} {2} {3:d}", d.Id, d.Title + ", " + d.ReleaseDate.ToString("MM/dd/yyyy"), d.Rating.ToString(), d.DirectorName);
+                Console.WriteLine("{0:D2} {1,-17} {2} {3:d}", d.Id, d.Title + ", " + d.ReleaseDate.ToString("MM/dd/yyyy"), d.MPAARating.ToString(), d.DirectorName);
             }
 
 

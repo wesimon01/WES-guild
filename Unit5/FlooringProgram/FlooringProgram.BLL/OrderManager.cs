@@ -19,15 +19,13 @@ namespace FlooringProgram.BLL
         public OrderManager()
         {
             AppSettingsReader reader = new AppSettingsReader();
-            string repo_Set = reader.GetValue("mode", typeof(string)).ToString();
+            string repoType = reader.GetValue("mode", typeof(string)).ToString();
             
-            if (repo_Set == "test")
-            {
+            if (repoType == "test") {
                  _repo = new MockOrderRepository();
             }
-            else
-            {
-                _repo = new OrderRepository();
+            else {
+                 _repo = new OrderRepository();
             }
         }
 
@@ -35,39 +33,36 @@ namespace FlooringProgram.BLL
         {
             _repo = repo;
         }
-
        
-        public Response<Order> GetOrder(int OrderNumber, DateTime date)
+        public Response<Order> GetOrder(int orderNumber, DateTime date)
         {         
             var response = new Response<Order>();
 
             try
             {
-                Order order = _repo.LoadOrder(OrderNumber, date);
+                Order order = _repo.LoadOrder(orderNumber, date);
 
-                if (order == null)
-                {
+                if (order == null) {
                     response.Success = false;
                     response.Message = "Order was not found!";
                 }
-                else
-                {
+                else {
                     response.Success = true;
                     response.Data = order;
                 }
             }
             catch (Exception ex)
             {
-                string Xception = ex.ToString();
-                if (File.Exists(@"DataFiles\Log.txt") == false) {
+                if (File.Exists(@"DataFiles\Log.txt") == false)
+                {
                     File.Create(@"Datafiles\Log.txt").Close();
                     using (var writer = File.CreateText(@"Datafiles\Log.txt"))
                     {
-                        writer.WriteLine("{0}\n", Xception);
+                        writer.WriteLine("{0}\n", ex.ToString());
                     }
                 }
-                        response.Success = false;
-                        response.Message = "Order does not exist";          
+                    response.Success = false;
+                    response.Message = $"Order {orderNumber} does not exist";          
             }
             return response;
         }
@@ -114,27 +109,40 @@ namespace FlooringProgram.BLL
         public decimal GetCostFt2(string productType)
         {           
             Product product = new Product();
+            decimal cost = 0;
+
             List<Product> products = _repo.GetProductInfo(productType);
-            product = products.FirstOrDefault(p => p.productType.ToLower() == productType);
-            decimal cost = product.CostperFt2;
+            product = products.FirstOrDefault(p => p.productType == productType.ToLower());
+
+            if (product != null)
+                cost = product.CostperFt2;
+            else
+                Console.WriteLine($"{productType} not found in the database... Cost is set to 0!");
+
             return cost;       
         }
 
         public decimal GetLaborFt2(string productType)
         {         
             Product product = new Product();
+            decimal cost = 0;
+
             List<Product> products = _repo.GetProductInfo(productType);
-            product = products.FirstOrDefault(p => p.productType.ToLower() == productType);
-            decimal cost = product.LaborperFt2;
+            product = products.FirstOrDefault(p => p.productType == productType.ToLower());
+
+            if (product != null)
+                cost = product.LaborperFt2;
+            else
+                Console.WriteLine($"{productType} not found in the database... Cost is set to 0!");
+
             return cost;
         }
 
         public decimal GetTaxRate(string state)
         {
             Tax StateTax = new Tax();
-            state = state.ToUpper();
             List<Tax> taxes = _repo.GetTaxInfo(state);
-            StateTax = taxes.FirstOrDefault(s => s.State == state);
+            StateTax = taxes.FirstOrDefault(s => s.State == state.ToUpper());
             decimal tax = StateTax.TaxRate;
             return tax;
         }
@@ -189,13 +197,13 @@ namespace FlooringProgram.BLL
                 order.OrderNumber = GetOrderNumber(order.date);
                 CallAddOrder(order);
             }
-
             else
             {
                 order.OrderNumber = GetOrderNumber(order.date);
                 CallCreateAndWrite(order);
             }
         }
+
 
     }
 }

@@ -48,7 +48,7 @@ namespace FlooringProgram.Data
                     OrderNumber = 2,
                     CustomerName = "Trump",
                     State = "PA",
-                    date = new DateTime(2016, 1, 2),
+                    date = new DateTime(2016, 1, 1),
                     TaxRate = 6.75M,
                     Total = 410.99M,
                     Tax = 25.99M,
@@ -65,7 +65,7 @@ namespace FlooringProgram.Data
                     OrderNumber = 3,
                     CustomerName = "Flint",
                     State = "MI",
-                    date = new DateTime(2016, 1, 3),
+                    date = new DateTime(2016, 1, 1),
                     TaxRate = 5.75M,
                     Total = 808.99M,
                     Tax = 43.99M,
@@ -82,7 +82,7 @@ namespace FlooringProgram.Data
                     OrderNumber = 4,
                     CustomerName = "goatsimulator",
                     State = "IN",
-                    date = new DateTime(2016, 1, 4),
+                    date = new DateTime(2016, 1, 1),
                     TaxRate = 6.00M,
                     Total = 1049.40M,
                     Tax = 59.40M,
@@ -141,8 +141,10 @@ namespace FlooringProgram.Data
             existingOrder.date = orderToUpdate.date;
         }
 
-        public List<Product> GetProductInfo(string productType) {
+        public List<Product> GetProductInfo(string productType)
+        {
             List<Product> products = new List<Product>();
+
             products.Add(new Product()
             {
                 productType = "carpet",
@@ -167,10 +169,12 @@ namespace FlooringProgram.Data
                 CostperFt2 = 5.15M,
                 LaborperFt2 = 4.75M
             });
-            return products;
-             }
 
-        public List<Tax> GetTaxInfo(string state) {
+            return products;
+       }
+
+        public List<Tax> GetTaxInfo(string state)
+        {
             List<Tax> taxes = new List<Tax>();
 
             taxes.Add(new Tax()

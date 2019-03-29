@@ -4,39 +4,45 @@
     ViewBag.Title = "DVDlist";
 }
 
-<h3>DVD List</h3>
+<h3>DVD List - (In Stock)</h3>
+<br />
 
 <div class="row">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>DVDId</th>
-                <th>Title</th>
-                <th>Release_Date</th>
-                <th>Rating</th>
-                <th>Studio</th>
-                <th>User_Rating</th>
-                <th>UserNotes</th>
-                <th>ActorsInMovie</th>          
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var dvd in Model)
-            {
-                if(dvd.IsBorrowed != true){
-               <tr>
-                    <td> @dvd.Id </td>
-                    <td> @dvd.Title </td>
-                    <td> @dvd.ReleaseDate.ToString("MM/dd/yyyy") </td>
-                    <td> @dvd.Rating </td>
-                    <td> @dvd.Studio </td>
-                    <td> @dvd.UserRating </td>
-                    <td> @dvd.UserNotes </td>
-                    <td> @dvd.ActorsInMovie </td>
-               </tr>
-                <tr></tr>
-            }
-    }
-        </tbody>
-    </table>
+    <div class="col-xs-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr style="background-color:gainsboro">
+                    <th>Title</th>
+                    <th>Release_Date</th>
+                    <th>Rating</th>
+                    <th>Studio</th>
+                    <th>User_Rating</th>
+                    <th>UserNotes</th>
+                    <th>Actors_In_Movie</th>
+                    <th>Modify?</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dvd in Model.OrderByDescending(d => d.Title).OrderByDescending(d => d.UserRating))
+                {
+                    if (!dvd.IsBorrowed)
+                    {
+                        <tr>
+                            <td> @dvd.Title </td>
+                            <td> @dvd.ReleaseDate.ToString("MM/dd/yyyy") </td>
+                            <td> @dvd.MPAARating </td>
+                            <td> @dvd.Studio </td>
+                            <td> @dvd.UserRating </td>
+                            <td> @dvd.UserNotes </td>
+                            <td> @dvd.ActorsInMovie </td>
+                            <td>
+                                @Html.ActionLink("Edit", "DVDEdit", "DVD", new { id = dvd.Id }, new { @class = "btn btn-primary" })
+                            </td>
+                        </tr>
+                        <tr></tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>   
 </div>

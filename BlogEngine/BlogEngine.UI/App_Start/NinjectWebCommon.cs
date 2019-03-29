@@ -65,8 +65,8 @@ namespace BlogEngine.UI.App_Start
             //kernel.Bind<I>
             //kernel.Bind<>
 
-            kernel.Bind<IBlogpostTestRepository>().To<BlogpostSQLRepository>();
-            kernel.Bind<IPageTestRepository>().To<PageSQLRepository>();
+            kernel.Bind<IBlogpostTestRepository>().To<BlogpostTestRepository>();
+            kernel.Bind<IPageTestRepository>().To<PageTestRepository>();
 
             kernel.Bind<IBlogEngineService>().To<BlogEngineService>();
         }        

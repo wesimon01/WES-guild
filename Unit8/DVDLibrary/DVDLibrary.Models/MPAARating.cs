@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DVDLibrary.Models
 {
-    public enum MPAARating
+    public enum MPAARating : int
     {
-        G,
-        PG,
-        PG_13,
-        R,
-        NC_17
+        G = 1,
+        PG = 2,
+        PG_13 = 3,
+        R = 4,
+        NC_17 = 5
     };
 }

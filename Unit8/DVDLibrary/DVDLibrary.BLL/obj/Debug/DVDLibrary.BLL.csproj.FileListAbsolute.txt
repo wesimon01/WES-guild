@@ -21,3 +21,16 @@ C:\_repos\evan-simon-individual-work\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\D
 C:\_repos\evan-simon-individual-work\Unit8\DVDLibrary\DVDLibrary.BLL\obj\Debug\DVDLibrary.BLL.csprojResolveAssemblyReference.cache
 C:\_repos\evan-simon-individual-work\Unit8\DVDLibrary\DVDLibrary.BLL\obj\Debug\DVDLibrary.BLL.dll
 C:\_repos\evan-simon-individual-work\Unit8\DVDLibrary\DVDLibrary.BLL\obj\Debug\DVDLibrary.BLL.pdb
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\DVDLibrary.BLL.dll
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\DVDLibrary.BLL.pdb
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\DVDLibrary.Data.dll
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\DVDLibrary.Models.dll
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\DVDLibrary.Data.pdb
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\DVDLibrary.Models.pdb
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\obj\Debug\DVDLibrary.BLL.csprojAssemblyReference.cache
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\obj\Debug\DVDLibrary.BLL.csproj.CoreCompileInputs.cache
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\obj\Debug\DVDLibrary.BLL.csproj.CopyComplete
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\obj\Debug\DVDLibrary.BLL.dll
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\obj\Debug\DVDLibrary.BLL.pdb
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\Dapper.dll
+C:\Code\WES-guild\Unit8\DVDLibrary\DVDLibrary.BLL\bin\Debug\Dapper.xml

@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-
-
 namespace BlogEngine.Models
 {
     public class Blogpost
@@ -33,9 +31,5 @@ namespace BlogEngine.Models
             dateExpires = DateTime.Now.AddDays(30);
             Author.AuthorName = "JSON";         
         }
-
-        
-
-
     }
 }

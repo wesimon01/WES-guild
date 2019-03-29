@@ -13,53 +13,46 @@ namespace BlogEngine.Data
     {
         public List<Blogpost> GetAllBlogPosts()
         {
-            List<Blogpost> blogposts = new List<Blogpost>();
-
+            var blogposts = new List<Blogpost>();
             using (SqlConnection cxn = new SqlConnection(Settings.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand();
-
-                cmd.CommandText = "PostGetAll";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-                cxn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
+                using (var cmd = new SqlCommand("PostGetAll", cxn))
+                {                    
+                    cmd.CommandType = CommandType.StoredProcedure;                   
+                    cxn.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        blogposts.Add(PopulateBlogpostFromDataReader(dr));
+                        while (dr.Read())
+                        {
+                            blogposts.Add(PopulateBlogpostFromDataReader(dr));
+                        }
                     }
-                }
+                }                
             }
-            foreach(var post in blogposts)
-            {
-                post.Hashtags = GetHashtagByPostId(post.PostId);
-            }
+            foreach(var post in blogposts)            
+                    post.Hashtags = GetHashtagByPostId(post.PostId);
+            
             return blogposts;
         }
 
         public Blogpost GetBlogPost(int postId)
         {
-            Blogpost blogpost = new Blogpost();
-
+            var blogpost = new Blogpost();
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
-
-                cmd.CommandText = "PostGetByID";
-                cmd.CommandType = CommandType.StoredProcedure;     
-                cmd.Parameters.AddWithValue("@PostID", postId);
-                cmd.Connection = cxn;
-                cxn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
+                using (var cmd = new SqlCommand("PostGetByID", cxn))
+                {                                      
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PostID", postId);                    
+                    cxn.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        blogpost = PopulateBlogpostFromDataReader(dr);
+                        while (dr.Read())
+                        {
+                            blogpost = PopulateBlogpostFromDataReader(dr);
+                        }
                     }
-                }
+                }                
             }
             blogpost.Hashtags = GetHashtagByPostId(blogpost.PostId);
             return blogpost;
@@ -69,23 +62,21 @@ namespace BlogEngine.Data
         {        
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
+                using (var cmd = new SqlCommand("PostInsert", cxn))
+                {                                       
+                    cmd.CommandType = CommandType.StoredProcedure;                    
+                    if (blogpost.Title != null)
+                        cmd.Parameters.AddWithValue("@Title", blogpost.Title);
 
-                cmd.CommandText = "PostInsert";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
+                    cmd.Parameters.AddWithValue("@AuthorName", blogpost.Author.AuthorName);
+                    cmd.Parameters.AddWithValue("@PublishDate", blogpost.datePublished);
+                    cmd.Parameters.AddWithValue("@ExpireDate", blogpost.dateExpires);
+                    cmd.Parameters.AddWithValue("@IsApproved", blogpost.IsApproved);
+                    cmd.Parameters.AddWithValue("@PostContent", blogpost.Content);
 
-                if (blogpost.Title != null)
-                cmd.Parameters.AddWithValue("@Title", blogpost.Title);
-                cmd.Parameters.AddWithValue("@AuthorName", blogpost.Author.AuthorName);
-                cmd.Parameters.AddWithValue("@PublishDate", blogpost.datePublished);
-                cmd.Parameters.AddWithValue("@ExpireDate", blogpost.dateExpires);
-                cmd.Parameters.AddWithValue("@IsApproved", blogpost.IsApproved);
-                cmd.Parameters.AddWithValue("@PostContent", blogpost.Content);
-                            
-                cxn.Open();
-                blogpost.PostId = (int)cmd.ExecuteScalar();
-                cxn.Close();
+                    cxn.Open();
+                    blogpost.PostId = (int)cmd.ExecuteScalar();                    
+                }               
             }
             AddHashtagListToDb(blogpost);
         }
@@ -108,18 +99,15 @@ namespace BlogEngine.Data
         {
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
+                using (var cmd = new SqlCommand("PostHashInsert", cxn))
+                {                    
+                    cmd.CommandType = CommandType.StoredProcedure;                    
+                    cmd.Parameters.AddWithValue("@PostID", postId);
+                    cmd.Parameters.AddWithValue("@HashtagID", hashtagId);
 
-                cmd.CommandText = "PostHashInsert";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-
-                cmd.Parameters.AddWithValue("@PostID", postId);
-                cmd.Parameters.AddWithValue("@HashtagID", hashtagId);
-
-                cxn.Open();
-                cmd.ExecuteNonQuery();
-                cxn.Close();
+                    cxn.Open();
+                    cmd.ExecuteNonQuery();                   
+                }               
             }
         }
 
@@ -128,17 +116,13 @@ namespace BlogEngine.Data
             int hashtagId;
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
-
-                cmd.CommandText = "HashtagInsert";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-                
-                cmd.Parameters.AddWithValue("@HashtagName", hashtag.HashtagName);
-
-                cxn.Open();
-                hashtagId = (int)cmd.ExecuteScalar();
-                cxn.Close();
+                using (var cmd = new SqlCommand("HashtagInsert", cxn))
+                {                    
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@HashtagName", hashtag.HashtagName);
+                    cxn.Open();
+                    hashtagId = (int)cmd.ExecuteScalar();               
+                }                
             }
             return hashtagId;
         }
@@ -147,16 +131,14 @@ namespace BlogEngine.Data
         {
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
-                
-                cmd.CommandText = "PostDelete";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-                cmd.Parameters.AddWithValue("@PostID", postId);
-               
-                cxn.Open();
-                cmd.ExecuteNonQuery();
-                cxn.Close();            
+                using (var cmd = new SqlCommand("PostDelete", cxn))
+                {                    
+                    cmd.CommandType = CommandType.StoredProcedure;                   
+                    cmd.Parameters.AddWithValue("@PostID", postId);
+
+                    cxn.Open();
+                    cmd.ExecuteNonQuery();                   
+                }                   
             }
         }
 
@@ -164,97 +146,90 @@ namespace BlogEngine.Data
         {
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand();
+                using (var cmd = new SqlCommand("PostUpdate", cxn))
+                {                   
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    
+                    cmd.Parameters.AddWithValue("@PostID", post.PostId);
+                    cmd.Parameters.AddWithValue("@Title", post.Title);
+                    cmd.Parameters.AddWithValue("@AuthorName", post.Author.AuthorName);
+                    cmd.Parameters.AddWithValue("@PublishDate", post.datePublished);
+                    cmd.Parameters.AddWithValue("@ExpireDate", post.dateExpires);
+                    cmd.Parameters.AddWithValue("@IsApproved", post.IsApproved);
+                    cmd.Parameters.AddWithValue("@PostContent", post.Content);
 
-                cmd.CommandText = "PostUpdate";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-                cmd.Parameters.AddWithValue("@PostID", post.PostId);
-                cmd.Parameters.AddWithValue("@Title", post.Title);
-                cmd.Parameters.AddWithValue("@AuthorName", post.Author.AuthorName);
-                cmd.Parameters.AddWithValue("@PublishDate", post.datePublished);
-                cmd.Parameters.AddWithValue("@ExpireDate", post.dateExpires);
-                cmd.Parameters.AddWithValue("@IsApproved", post.IsApproved);
-                cmd.Parameters.AddWithValue("@PostContent", post.Content);
-
-                cxn.Open();
-                cmd.ExecuteNonQuery();
-                cxn.Close();            
+                    cxn.Open();
+                    cmd.ExecuteNonQuery();                   
+                }                  
             }
             AddHashtagListToDb(post);
         }
 
         public List<Blogpost> GetPostsbyHashTag(Hashtag hashtag)
         {
-            List<Blogpost> blogposts = new List<Blogpost>();
-
+            var blogposts = new List<Blogpost>();
             using (SqlConnection cxn = new SqlConnection(Settings.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand();
+                using (var cmd = new SqlCommand("PostGetByHashtagID", cxn))
+                { 
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@HashtagID", hashtag.HashtagId);                   
+                    cxn.Open();
 
-                cmd.CommandText = "PostGetByHashtagID";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@HashtagID", hashtag.HashtagId);
-                cmd.Connection = cxn;
-                cxn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        blogposts.Add(PopulateBlogpostFromDataReader(dr));
+                        while (dr.Read())
+                        {
+                            blogposts.Add(PopulateBlogpostFromDataReader(dr));
+                        }
                     }
-                }
+                }               
             }
             return blogposts;
         }
-
-        
+       
         public List<Hashtag> GetAllHashTags()
         {
-            List<Hashtag> hashtags = new List<Hashtag>();
-
+            var hashtags = new List<Hashtag>();
             using (SqlConnection cxn = new SqlConnection(Settings.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand();
-
-                cmd.CommandText = "HashtagGetAll";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cxn;
-                cxn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
+                using (var cmd = new SqlCommand("HashtagGetAll", cxn))
                 {
-                    while (dr.Read())
+                    cmd.CommandText = "HashtagGetAll";
+                    cmd.CommandType = CommandType.StoredProcedure;                   
+                    cxn.Open(); 
+                    
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        hashtags.Add(PopulateHashtagFromDataReader(dr));
+                        while (dr.Read())
+                        {
+                            hashtags.Add(PopulateHashtagFromDataReader(dr));
+                        }
                     }
-                }
+                }              
             }
             return hashtags;
         }
     
         public List<Hashtag> GetHashtagByPostId(int postId)
         {
-            List<Hashtag> hashtags = new List<Hashtag>();
-
+            var hashtags = new List<Hashtag>();
             using (SqlConnection cxn = new SqlConnection(Settings.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand();
+                using (var cmd = new SqlCommand("HashtagGetByPostID", cxn))
+                {                   
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PostID", postId);
+                    cxn.Open();
 
-                cmd.CommandText = "HashtagGetByPostID";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@PostID", postId);
-                cmd.Connection = cxn;
-                cxn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        hashtags.Add(PopulateHashtagFromDataReader(dr));
+                        while (dr.Read())
+                        {
+                            hashtags.Add(PopulateHashtagFromDataReader(dr));
+                        }
                     }
-                }
+                }               
             }
             return hashtags;
         }
@@ -262,37 +237,34 @@ namespace BlogEngine.Data
         public List<Blogpost> GetPostsbyHashTagName(string hashtagName)
         {
             var allblogposts = GetAllBlogPosts();
-
             return allblogposts.Where(h => h.Hashtags.Exists(n => n.HashtagName == hashtagName)).ToList();
         }
 
-    private List<Hashtag> PopulateHashtagsFromDataReaderWithId(int postId)
+        private List<Hashtag> PopulateHashtagsFromDataReaderWithId(int postId)
         {
+            var hashtags = new List<Hashtag>();
             using (var cxn = new SqlConnection(Settings.ConnectionString))
             {
-                var hashtags = new List<Hashtag>();
-
-                var cmd = new SqlCommand();
-                cmd.CommandText = "HashtagGetByPostID";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@PostID", postId);
-                cmd.Connection = cxn;
-                cxn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
+                using (var cmd = new SqlCommand("HashtagGetByPostID", cxn))
+                {                                        
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PostID", postId);
+                    cxn.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        hashtags.Add(new Hashtag { HashtagId = (int)(dr["HashtagID"]), HashtagName = dr["HashtagName"].ToString()});
+                        while (dr.Read())
+                        {
+                            hashtags.Add(new Hashtag { HashtagId = (int)(dr["HashtagID"]), HashtagName = dr["HashtagName"].ToString() });
+                        }
                     }
-                }
+                }               
                 return hashtags;
             }           
         }
 
         private Blogpost PopulateBlogpostFromDataReader(SqlDataReader dr)
         {
-            Blogpost blogpost = new Blogpost();
+            var blogpost = new Blogpost();
             
             blogpost.PostId = (int)dr["PostID"];
             blogpost.Title = dr["Title"].ToString();
@@ -314,16 +286,12 @@ namespace BlogEngine.Data
 
         private Hashtag PopulateHashtagFromDataReader(SqlDataReader dr)
         {
-            Hashtag hashtag = new Hashtag();
-
+            var hashtag = new Hashtag();
             hashtag.HashtagId = (int)dr["HashtagID"];
             hashtag.HashtagName = dr["HashtagName"].ToString();
 
             return hashtag;
         }
-
-
-
 
     }
 }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using FlooringProgram.BLL;
 using System.Globalization;
 using FlooringProgram.Models;
+using FlooringProgram.UI.Properties;
+using FlooringProgram.UI.Util;
 
 namespace FlooringProgram.UI
 {
@@ -25,18 +27,18 @@ namespace FlooringProgram.UI
 
         public void Execute()
         {
-            _date = GetDateFromUser();
+            _date = Utilities.GetDateFromUser();
             ValidateUserDate(_date);
             do
             {
                 _orderNumber = GetOrderNumberFromUser();     
                 _response = _mgr.GetOrder(_orderNumber, _date);
-                if (_response.Success ==  false)
+                if (!_response.Success)
                 {
                     Console.WriteLine(" {0}, press Any Key to Continue", _response.Message);
                     Console.ReadKey();
                 }
-            } while (_response.Success == false);
+            } while (!_response.Success);
 
             _editedOrder = GetNewOrderAttributes(_response.Data);
             DisplayUpdatedOrderBeforeWrite(_editedOrder);
@@ -44,7 +46,7 @@ namespace FlooringProgram.UI
 
         private Order GetNewOrderAttributes(Order orderToEdit)
         {
-            Order order = new Order();
+            var order = new Order();
 
             Console.Clear();
             Console.WriteLine("\n Edit Customer Name, press Enter to keep current value ({0}):", orderToEdit.CustomerName);
@@ -58,20 +60,18 @@ namespace FlooringProgram.UI
             do
             {
                 Console.WriteLine("\n Edit customer state (OH,PA,IN,MI), press Enter to keep current value ({0}): ", orderToEdit.State);
-                string state = Console.ReadLine();
+                string state = Console.ReadLine();             
                 state = state.ToUpper();
-
+                
                 if (string.IsNullOrEmpty(state))
                 {
                     order.State = orderToEdit.State;
                     break;
                 }
-
-                if (state == "OH" || state == "MI" || state == "IN" || state == "PA")
+                else if (Settings.Default.ValidStates.Contains(state))
                 {
                     order.State = state;
                     break;
-
                 }
 
                 Console.WriteLine("\n That is not a valid state, press any key");
@@ -84,15 +84,14 @@ namespace FlooringProgram.UI
 
                 Console.WriteLine("\n Edit flooring material desired (carpet, laminate, tile, wood),\n press Enter to keep current value ({0}): ", orderToEdit.productType);
                 string material = Console.ReadLine();
-                material = material.ToLower();
+                material = material.ToUpper();
 
                 if (string.IsNullOrEmpty(material))
                 {
                     order.productType = orderToEdit.productType;
                     break;
                 }
-
-                if (material == "carpet" || material == "laminate" || material == "tile" || material == "wood")
+                else if (Settings.Default.ValidMaterials.Contains(material))
                 {
                     order.productType = material;
                     break;
@@ -156,40 +155,19 @@ namespace FlooringProgram.UI
             } while (true);
         }
 
-        private DateTime GetDateFromUser()
-        {
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("\n Enter an order date (MM/DD/YYYY) : ");
-                string input = Console.ReadLine();
-                DateTime date;
-
-                if (DateTime.TryParseExact(input, "MM/dd/yyyy", CultureInfo.InvariantCulture,
-                    DateTimeStyles.None, out date))
-                {
-                    return date;
-                }
-
-                Console.WriteLine("\n That was not a valid date.  Press any key to try again...");
-                Console.ReadKey();
-            } while (true);
-        }
-
         private void ValidateUserDate(DateTime date)
         {
             bool isValidInput = false;
             string pathToCheck = _mgr.CallGetFileName(date);
             isValidInput = _mgr.CallSeeIfFileExists(pathToCheck);
 
-            if (isValidInput == false)
+            if (!isValidInput)
             {
                 Console.WriteLine("\n That order date does not exist, 'Enter' to try again");
                 Console.ReadKey();
                 Execute();
             }
-            else
-            {
+            else {
                 isValidInput = true;
             }
 
@@ -206,15 +184,13 @@ namespace FlooringProgram.UI
                 Console.WriteLine("\n Enter Choice: ");
                 string input = Console.ReadLine();
 
-                if (input != null && input != "")
+                if (!string.IsNullOrEmpty(input))
                 {
 
-                    if (input.Substring(0, 1).ToUpper() == "Q")
-                    {
+                    if (input.ToUpper() == "Q")                   
                         break;
-                    }
 
-                    if (input.Substring(0, 1).ToUpper() == "W")
+                    else if (input.ToUpper() == "W")
                     {
                         _mgr.CallEditOrder(editedOrder);
                         break;

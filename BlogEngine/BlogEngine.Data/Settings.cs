@@ -15,14 +15,11 @@ namespace BlogEngine.Data
         {
             get
             {
-                if (string.IsNullOrEmpty(_connectionString))
-                {
+                if (string.IsNullOrEmpty(_connectionString))                
                     _connectionString = ConfigurationManager.ConnectionStrings["BlogEngine"].ConnectionString;
-                }
-
+                
                 return _connectionString;
             }
         }
-
     }
 }

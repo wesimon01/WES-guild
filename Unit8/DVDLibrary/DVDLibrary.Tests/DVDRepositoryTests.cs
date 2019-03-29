@@ -54,7 +54,7 @@ namespace DVDLibrary.Tests
                 Id = 4,
                 Title = "Godzilla, Rhow!",
                 ReleaseDate = new DateTime(2010, 3, 1),
-                Rating = MPAARating.PG,
+                MPAARating = MPAARating.PG,
                 DirectorName = "Goat",
                 Studio = "20th Century Fox",
                 UserRating = 5.0M,
@@ -74,7 +74,7 @@ namespace DVDLibrary.Tests
             var repo = new DVDRepository();
             var dvd = repo.GetbyTitle("PlanetEarth");
 
-            Assert.AreEqual(dvd.Rating, MPAARating.PG);
+            Assert.AreEqual(dvd.MPAARating, MPAARating.PG);
             Assert.AreEqual(dvd.Id, 2);
         }
 

@@ -8,66 +8,71 @@
     <div class="row">
         <div class="col-xs-12">
             <h3>DVD History</h3>
-            <br/>
+            <br />
             <div class="form-group">
                 <label>List of DVDs :</label>
                 <div id="">
-                    @Html.DropDownListFor(m => m._selectedDVDId, Model._DVDitems, "-Choose A DVD-", new { @class = "form-control", id = "SelectDVD" })
+                    @Html.DropDownListFor(m => m.dvdId, Model.DVDItems, "-Choose A DVD-", new { @class = "form-control", id = "SelectDVD" })
                 </div>
             </div>
             <br /><br />
 
-            @if (Model.Get(Model._selectedDVDId) != null && Model.Get(Model._selectedDVDId).BorrowerList != null) // check to see if selected employee is null
+            @if (Model.selectedDVD != null && Model.selectedDVD.BorrowerList != null) // check to see if selected employee is null
             {
                 <div class="row" id="">
                     <div class="col-xs-12">
-                        <table class="table table-striped" style="width: auto;">
+                        <table class="table table-bordered table-striped" style="width: auto;">
                             <thead>
-                                <tr>
-                                    <th>DVDId</th>
+                                <tr style="background-color:gainsboro">
+                                    <th>Id</th>
                                     <th>Title</th>
                                     <th>Release Date</th>
                                     <th>Rating</th>
                                     <th>Borrowers</th>
+                                    <th>BorrowerId</th>
                                     <th>CheckOut Date</th>
                                     <th>Return Date</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>@Model.Get(Model._selectedDVDId).Id</td>
-                                    <td>@Model.Get(Model._selectedDVDId).Title</td>
-                                    <td>@Model.Get(Model._selectedDVDId).ReleaseDate.ToString("MM/dd/yyyy")</td>
-                                    <td>@Model.Get(Model._selectedDVDId).Rating</td>
-                                                             
-                                <td>
-                                    
-                                    @foreach (var borrower in Model.Get(Model._selectedDVDId).BorrowerList)
-                                    {
-                                         @borrower.BorrowerName 
-                                            <p></p>     
-                                    }
+                                    <td>@Model.selectedDVD.Id</td>
+                                    <td>@Model.selectedDVD.Title</td>
+                                    <td>@Model.selectedDVD.ReleaseDate.ToString("MM/dd/yyyy")</td>
+                                    <td>@Model.selectedDVD.MPAARating</td>
+
+                                    <td>
+                                        @foreach (var borrower in Model.selectedDVD.BorrowerList)
+                                        {
+                                            @borrower.BorrowerName
+                                            <p></p>
+                                        }
                                     </td>
                                     <td>
-                                     @foreach (var borrower in Model.Get(Model._selectedDVDId).BorrowerList)
-                                     {
-                                        @borrower.DateBorrowed.ToString("MM/dd/yyyy")
-                                        <p></p>
-                                           
-                                     }
-                                   </td>
+                                        @foreach (var borrower in Model.selectedDVD.BorrowerList)
+                                        {
+                                            @borrower.BorrowerId
+                                            <p></p>
+                                        }
+                                    </td>
                                     <td>
-                                     @foreach (var borrower in Model.Get(Model._selectedDVDId).BorrowerList)
-                                     {                          
+                                        @foreach (var borrower in Model.selectedDVD.BorrowerList)
+                                        {
+                                            @borrower.DateBorrowed.ToString("MM/dd/yyyy")
+                                            <p></p>
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (var borrower in Model.selectedDVD.BorrowerList)
+                                        {
                                             @borrower.DateReturned.ToString("MM/dd/yyyy")
                                             <p></p>
-                                    }
+                                        }
                                     </td>
-
-                                    </tr>                      
+                                </tr>
                             </tbody>
                         </table>
-                        <br/><br/>
+                        <br /><br />
                     </div>
                 </div>
             }

@@ -31,7 +31,7 @@
         $(document).ready(function () {
            
             $("#btnSearchByTitle").click(function () {
-                var url = "/api/WebApi/";
+                var url = 'http://localhost:62566/api/dvd/search/'
                 var title = $("#dvdTitleInput").val();
 
                 $.getJSON(url + title)
@@ -48,21 +48,20 @@
                 });
             });
         });
-       
+
+        $().ready(function () {
+            // on button click, show modal
+            $('#btnSearchByTitle').click(function () {
+                $('#SearchDVDbyTitleModal').modal('toggle');
+            });
+        })
+
         //function dateconvert(csharpdate) {
         //    var dat = new Date(csharpdate);
         //    return dat.getFullYear() "/" + dat.getMonth() + dat.getDay();
         //}
 </script>
-
-<script>
-    $().ready(function () {
-        // on button click, show modal
-        $('#btnSearchByTitle').click(function () {
-            $('#SearchDVDbyTitleModal').modal('toggle');
-        });
-    })
-</script> 
+ 
 }
 
 

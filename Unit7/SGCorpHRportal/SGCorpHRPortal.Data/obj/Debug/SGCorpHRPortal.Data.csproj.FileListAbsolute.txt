@@ -1,0 +1,9 @@
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\bin\Debug\SGCorpHRPortal.Data.dll
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\bin\Debug\SGCorpHRPortal.Data.pdb
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\bin\Debug\SGCorpHRportal.Models.dll
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\bin\Debug\SGCorpHRportal.Models.pdb
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\obj\Debug\SGCorpHRPortal.Data.csprojAssemblyReference.cache
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\obj\Debug\SGCorpHRPortal.Data.csproj.CoreCompileInputs.cache
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\obj\Debug\SGCorpHRPortal.Data.csproj.CopyComplete
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\obj\Debug\SGCorpHRPortal.Data.dll
+C:\Code\WES-guild\Unit7\SGCorpHRportal\SGCorpHRPortal.Data\obj\Debug\SGCorpHRPortal.Data.pdb

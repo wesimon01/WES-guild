@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FlooringProgram.Models;
 using FlooringProgram.BLL;
 using System.Globalization;
+using FlooringProgram.UI.Util;
 
 namespace FlooringProgram.UI
 {
@@ -25,18 +26,18 @@ namespace FlooringProgram.UI
 
         public void Execute()
         {
-            _date = GetDateFromUser();
+            _date = Utilities.GetDateFromUser();
             ValidateUserDate(_date);
             do
             {
                 _orderNumber = GetOrderNumberFromUser();
                 _response = _mgr.GetOrder(_orderNumber, _date);
-                if (_response.Success == false)
+                if (!_response.Success)
                 {
                     Console.WriteLine(" {0}, press Any Key to Continue", _response.Message);
                     Console.ReadKey();
                 }
-            } while (_response.Success == false);
+            } while (!_response.Success);
 
             DisplayOrderToDelete(_orderNumber, _date);
         }
@@ -108,24 +109,7 @@ namespace FlooringProgram.UI
                 Console.ReadKey();
             } while (true);
         }
-
-        private DateTime GetDateFromUser()
-        {
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("\n Enter an order date (MM/DD/YYYY) : ");
-                string input = Console.ReadLine();
-                DateTime date;
-
-                if (DateTime.TryParseExact(input, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
-                    return date;
-
-                Console.WriteLine(" That was not a valid date.  Press any key to try again...");
-                Console.ReadKey();
-            } while (true);
-        }
-
+       
         private void ValidateUserDate(DateTime date)
         {
             bool isValidInput = false;

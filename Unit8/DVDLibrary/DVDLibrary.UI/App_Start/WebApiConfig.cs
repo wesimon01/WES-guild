@@ -19,8 +19,8 @@ namespace DVDLibrary.UI
 
             config.Routes.MapHttpRoute(
                 name: "API Default",
-                routeTemplate: "api/{controller}/{st}",
-                defaults: new { st = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{str}",
+                defaults: new { str = RouteParameter.Optional }
             );
         }
     }

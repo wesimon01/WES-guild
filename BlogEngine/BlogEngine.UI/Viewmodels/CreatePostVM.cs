@@ -14,7 +14,6 @@ namespace BlogEngine.UI.Viewmodels
         public CreatePostVM()
         {
             Post = new Blogpost();
-
         }
     }
 }

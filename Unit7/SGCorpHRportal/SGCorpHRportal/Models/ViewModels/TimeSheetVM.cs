@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SGCorpHRportal.Models.Data;
+using SGCorpHRportal.Data;
 using System.Web.Mvc;
-using SGCorpHRportal.Models.Repos;
+using SGCorpHRportal.Models;
 
 
-namespace SGCorpHRportal.Models.ViewModels
+namespace SGCorpHRportal.UI.Models.ViewModels
 {
     public class TimeSheetVM
     {
@@ -41,11 +41,7 @@ namespace SGCorpHRportal.Models.ViewModels
         }
 
 
-        public string GetWholeName(Employee employee)
-        {
-            string wholeName = employee.LastName + " , " + employee.FirstName;
-            return wholeName;
-        }
+        
 
     }
 }

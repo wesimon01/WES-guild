@@ -31,8 +31,7 @@ namespace BlogEngine.UI.Controllers
 
         public ActionResult SidePanel(List<Hashtag> hashtags)
         {
-            hashtags = _blogEngineSvc.GetAllHashTags();
-            
+            hashtags = _blogEngineSvc.GetAllHashTags();          
             return PartialView("_SidePanel", hashtags);
         }
 
@@ -43,6 +42,7 @@ namespace BlogEngine.UI.Controllers
         }
         
         [Authorize]
+        [HttpGet]
         public ActionResult DeletePage(int id)
         {
             _blogEngineSvc.RemovePage(id);
@@ -50,6 +50,7 @@ namespace BlogEngine.UI.Controllers
         }
 
         [Authorize]
+        [HttpGet]
         public ActionResult EditPage(int id)
         {
             var model = _blogEngineSvc.GetPage(id);
@@ -60,18 +61,17 @@ namespace BlogEngine.UI.Controllers
         [HttpPost]
         public ActionResult EditPage(Page page)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 _blogEngineSvc.UpdatePage(page);
                 return RedirectToAction("PageAdmin");
             }
-            else
-            {
+            else {
                 return View(page);
             }
         }
 
         [Authorize]
+        [HttpGet]
         public ActionResult CreatePage()
         {
             var model = new Page();
@@ -82,13 +82,11 @@ namespace BlogEngine.UI.Controllers
         [HttpPost]
         public ActionResult CreatePage(Page page)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 _blogEngineSvc.AddPage(page);
                 return RedirectToAction("PageAdmin");
             }
-            else
-            {
+            else {
                 return View(page);
             }
         }
@@ -115,6 +113,7 @@ namespace BlogEngine.UI.Controllers
         }
 
         [Authorize]
+        [HttpGet]// just added
         public ActionResult EditPost(int id)
         {
             ApplicationUser currentUser = GetCurrentUserInfo();
@@ -142,18 +141,19 @@ namespace BlogEngine.UI.Controllers
                 _blogEngineSvc.UpdateBlogPost(viewModel.Post);
                 return RedirectToAction("PostAdmin");
             }
-            else
-            {
+            else {
                 return View(viewModel);
             }
         }
 
         [Authorize]
+        [HttpGet]
         public ActionResult CreatePost()
         {
             var currentUser = GetCurrentUserInfo();
             var viewModel = new CreatePostVM();
             viewModel.Post.Author.AuthorName = currentUser.FirstName;
+
             return View(viewModel);
         }
 
@@ -184,16 +184,13 @@ namespace BlogEngine.UI.Controllers
         [HttpGet]
         public ActionResult IndividualPost(int? id)
         {
-            if (id != null && id.Value != 0)
-            {
+            if (id != null && id.Value != 0)            
                 return View(_blogEngineSvc.GetBlogPost(id.Value));
-            }
-            else
-            {
+            
+            else {
                 return RedirectToAction("Index", "Home");
             }
         }
-
 
         [HttpPost]
         public ActionResult FileUpload(HttpPostedFileWrapper file)
@@ -255,7 +252,6 @@ namespace BlogEngine.UI.Controllers
         public ActionResult About()
         {
             List<Blogpost> posts = _blogEngineSvc.GetAllBlogPosts();
-
             return View(posts);
         }
 

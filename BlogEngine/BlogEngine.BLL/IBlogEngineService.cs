@@ -18,5 +18,6 @@ namespace BlogEngine.BLL
         void UpdatePage(Page page);
         List<Hashtag> GetAllHashTags();
         List<Blogpost> GetPostsbyHashTagName(string hashtagName);
+        List<Blogpost> GetPostsbyHashTagId(int id);
     }
 }

@@ -8,14 +8,14 @@ using DVDLibrary.Models;
 namespace DVDLibrary.Data
 {
     public interface IDVDRepository
-    {
-        List<DVD> GetAll();
+    {                
+        void RemoveDVD(int id);
+        void AddDVD(DVD dvd);
+        void EditDVD(DVD dvd);
         DVD Get(int dvdId);
         DVD GetbyTitle(string title);
-        void RemoveDVD(int dvdId);
-        void AddDVD(DVD dvd);
+        List<DVD> GetAll();
         List<Borrower> GetBorrowerList(int id);
-        List<Borrower> GetAllBorrowers();
-        
+        List<Borrower> GetAllBorrowers();       
     }
 }

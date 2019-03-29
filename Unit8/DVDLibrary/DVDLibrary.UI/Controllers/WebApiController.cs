@@ -19,9 +19,11 @@ namespace DVDLibrary.UI
             _service = service;
         }
 
-        public DVD Get(string st)
+        [AcceptVerbs("GET")]
+        [Route("api/dvd/search/{str}")]
+        public DVD GetDVDbyTitle(string str)
         {
-            return _service.GetDVDbyTitle(st);
+            return _service.GetDVDbyTitle(str);
         }
  
     }

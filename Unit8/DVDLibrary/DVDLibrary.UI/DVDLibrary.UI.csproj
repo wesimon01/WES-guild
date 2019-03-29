@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -184,9 +185,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Utilities.cs" />
+    <Compile Include="ViewModels\DVDAddVM.cs" />
     <Compile Include="ViewModels\DVDdisplayVM.cs" />
+    <Compile Include="ViewModels\DVDEditVM.cs" />
     <Compile Include="ViewModels\DVDhistoryVM.cs" />
-    <Compile Include="ViewModels\DVDremoveVM.cs" />
     <Compile Include="ViewModels\DVDsearchVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +237,7 @@
     <Content Include="Views\DVD\DVDsearch.cshtml" />
     <Content Include="Views\DVD\DVDhistory.cshtml" />
     <Content Include="Views\Shared\_DVDSearchResult.cshtml" />
+    <Content Include="Views\DVD\DVDEdit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

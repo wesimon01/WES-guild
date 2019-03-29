@@ -13,9 +13,10 @@ namespace DVDLibrary.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
         [Required]
-        public MPAARating Rating { get; set; }
+        public MPAARating MPAARating { get; set; }
         [Required]
         public string DirectorName { get; set; }
         [Required]
@@ -23,10 +24,10 @@ namespace DVDLibrary.Models
         [Required]
         public decimal UserRating { get; set; }
         [Required]
-        public string UserNotes { get; set; } // public List<string> UserNotes { get; set; }
+        public string UserNotes { get; set; } 
         [Required]
-        public string ActorsInMovie { get; set; } // public List<string> ActorsInMovie { get ; set; }
-        public List<Borrower> BorrowerList { get; set; }
+        public string ActorsInMovie { get; set; } 
+        public IEnumerable<Borrower> BorrowerList { get; set; }
         public bool IsBorrowed { get; set; }        
     }
 }

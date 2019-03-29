@@ -14,7 +14,5 @@ namespace DVDLibrary.Models
         public DateTime DateBorrowed { get; set; }
         public DateTime DateReturned { get; set; }
         
-        //public List<string> BorrowerNotes { get; set; }
-        //public List<decimal> BorrowerRatings { get; set; }
     }
 }

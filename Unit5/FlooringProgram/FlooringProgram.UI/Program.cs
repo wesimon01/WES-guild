@@ -12,8 +12,17 @@ namespace FlooringProgram.UI
     {
         public static void Main(string[] args)
         {
-            MainMenu menu = new MainMenu();
-            menu.Execute();
+            try
+            {
+                MainMenu menu = new MainMenu();
+                menu.Execute();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+            
         }
     }
 }

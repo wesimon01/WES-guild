@@ -16,6 +16,7 @@ namespace FlooringProgram.UI
             do
             {
                 Console.Clear();
+                ConsoleColor defaultColor = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\n WELCOME TO SG_FLOORING CORP.");
                 Console.WriteLine(@"            __       ");
@@ -26,6 +27,8 @@ namespace FlooringProgram.UI
                 Console.WriteLine(@"        \__/  \__/   ");
                 Console.WriteLine(@"           \__/      ");
                 Console.WriteLine("==============================");
+
+                Console.ForegroundColor = defaultColor;
                 Console.WriteLine("\n 1. Display Orders");
                 Console.WriteLine(" 2. Add an Order");
                 Console.WriteLine(" 3. Edit an Order");
@@ -35,13 +38,14 @@ namespace FlooringProgram.UI
                 Console.WriteLine("\n\n Enter Choice: ");
                 string input = Console.ReadLine();
 
-                if (input == "" || input == null)
+                if (string.IsNullOrEmpty(input))
                 {
                     Execute();
                 }
-                if ((input.Substring(0, 1).ToUpper()) == "Q")
+                if (input.ToUpper() == "Q") {
                     break;
-
+                }
+     
                 ProcessChoice(input);
 
             } while (true);
@@ -53,23 +57,23 @@ namespace FlooringProgram.UI
             {
                 case "1":
                     // display all orders...
-                    DisplayOrdersWorkflow displayOrders = new DisplayOrdersWorkflow(_mgr);
-                    displayOrders.Execute();
+                    var displayOrdersWorkflow = new DisplayOrdersWorkflow(_mgr);
+                    displayOrdersWorkflow.Execute();
                     break;
                 case "2":
                     // add an order...
-                    AddOrderWorkflow addOrder = new AddOrderWorkflow(_mgr);
-                    addOrder.Execute();
+                    var addOrderWorkflow = new AddOrderWorkflow(_mgr);
+                    addOrderWorkflow.Execute();
                     break;
                     // edit an order...
                 case "3":
-                    EditOrderWorkflow editOrder = new EditOrderWorkflow(_mgr);
-                    editOrder.Execute();
+                    var editOrderWorkflow = new EditOrderWorkflow(_mgr);
+                    editOrderWorkflow.Execute();
                     break;
                     // remove an order...
                 case "4":
-                    DeleteOrderWorkflow deleteOrder = new DeleteOrderWorkflow(_mgr);
-                    deleteOrder.Execute();
+                    var deleteOrderWorkflow = new DeleteOrderWorkflow(_mgr);
+                    deleteOrderWorkflow.Execute();
                     break;
                 default:
                     Execute();

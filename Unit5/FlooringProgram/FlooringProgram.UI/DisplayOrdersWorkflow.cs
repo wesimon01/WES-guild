@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FlooringProgram.Models;
 using FlooringProgram.BLL;
 using System.Globalization;
-
+using FlooringProgram.UI.Util;
 
 namespace FlooringProgram.UI
 {
@@ -26,9 +26,9 @@ namespace FlooringProgram.UI
         {
             do
             {
-                _date = GetDateFromUser();
+                _date = Utilities.GetDateFromUser();
                 ValidateUserDate(_date);
-            } while (_isValidInput == false);
+            } while (!_isValidInput);
 
             DisplayAllOrders(_date);
         }
@@ -80,33 +80,13 @@ namespace FlooringProgram.UI
             Console.WriteLine("\n");
         }
 
-        private DateTime GetDateFromUser()
-        {
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("\n Enter an order date (MM/DD/YYYY) : ");
-                string input = Console.ReadLine();
-                DateTime date;
-
-                if (DateTime.TryParseExact(input, "MM/dd/yyyy", CultureInfo.InvariantCulture,
-                    DateTimeStyles.None, out date))
-                {
-                    return date;
-                }
-
-                Console.WriteLine("\n That was not a valid date.  Press any key to try again...");
-                Console.ReadKey();
-            } while (true);
-        }
-
         private void ValidateUserDate(DateTime date)
         {
             _isValidInput = false; 
             string pathToCheck = _mgr.CallGetFileName(date);
             _isValidInput = _mgr.CallSeeIfFileExists(pathToCheck);
 
-                if (_isValidInput == false)
+                if (!_isValidInput)
                 {
                     Console.WriteLine("\n That order date does not exist, 'Enter' to try again");
                     Console.ReadKey();                   

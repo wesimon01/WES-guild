@@ -1,98 +1,107 @@
-﻿@model DVDLibrary.UI.ViewModels.DVDremoveVM
+﻿@model IEnumerable<DVDLibrary.Models.DVD>
 
 @{
     ViewBag.Title = "DVDremove";
 }
 
 <h3>Remove DVD</h3>
+<br />
 
 <div class="row">
-    <table class="table table-bordered table-striped" id="">
-        <thead>
-            <tr>              
-                <th>Title</th>
-                <th>Release_Date</th>
-                <th>Rating</th>
-                <th>Studio</th>
-                <th>User_Rating</th>             
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var dvd in Model._dvds)
-            {
-                <tr id="@dvd.Id">
-                    <td>@dvd.Title</td>
-                    <td>@dvd.ReleaseDate.ToString("MM/dd/yyyy")</td>
-                    <td>@dvd.Rating</td>
-                    <td>@dvd.Studio</td>
-                    <td>@dvd.UserRating</td>
-                    <td>
-                        @*<button type="button" value="dvd.Id" class="btn btn-default btnDeleteDVD">Delete</button>*@
-                        @Html.ActionLink("Delete", "DVDremove", "DVD", new { dvdId = dvd.Id}, new { @class = "btn btn-primary btnDeleteDVD", data_dvdid = dvd.Id})
-                    </td>
+    <div class="col-xs-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr style="background-color:gainsboro">
+                    <th>Title</th>
+                    <th>Release_Date</th>
+                    <th>Rating</th>
+                    <th>Studio</th>
+                    <th>User_Rating</th>
+                    <th>DELETE ?</th>
                 </tr>
+            </thead>
+            <tbody>
+                @foreach (var dvd in Model)
+                {
+                    <tr id="@dvd.Id">
+                        <td>@dvd.Title</td>
+                        <td>@dvd.ReleaseDate.ToString("MM/dd/yyyy")</td>
+                        <td>@dvd.MPAARating</td>
+                        <td>@dvd.Studio</td>
+                        <td>@dvd.UserRating</td>
+                        <td>
+                            @using (Html.BeginForm("RemoveDVD", "DVD", FormMethod.Post))
+                            {
+                                @*<button type="button" value="dvd.Id" class="btn btn-default btnDeleteDVD">Delete</button>*@
+                                @Html.ActionLink("Delete", "DVDremove", "DVD", new { dvdId = dvd.Id }, new { @class = "btn btn-primary btnDeleteDVD", data_dvdid = dvd.Id, data_title = dvd.Title })
+                            }
+                        </td>
+                    </tr>
+                    <tr></tr>
+                }
                 <tr></tr>
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-
-
 @section Scripts{
-<script>   
-    $(".btnDeleteDVD").click(function (e) {
-        e.preventDefault();
-        var dvd = {};
-        var row = $(this).parent().parent();
-        dvdid = $(".btnDeleteDVD").data("dvdid");
+    <script>
+        $(".btnDeleteDVD").click(function (e) {
+            e.preventDefault();
+            var dvd = {};
+            var row = $(this).parent().parent();
+            dvdid = $(".btnDeleteDVD").data("dvdid");
 
-        $.ajax({
-            url: "/DVD/DVDremove",
-            data: { dvdId: dvdid },
-            method: "POST",
-            success: function() {
-               row.slideUp(300,function() {
-                    row.remove();
+            $.ajax({
+                url: "/DVD/DVDremove",
+                data: {
+                    dvdId: dvdid,
+                    title: title
+                },
+                method: "POST",
+                success: function () {
+                    row.slideUp(300, function () {
+                        row.remove();
+                    })
+                }
+            })
+                .done(function (data) {
+                    alert("DVD:" + data.title + " deleted");
                 })
-            }
-        })
-            .done(function (data) {
-            alert("selected dvd deleted");
-        })
 
-        .fail(function (jq, status, error) {
-            alert("broken");
+                .fail(function (jq, status, error) {
+                    alert("Delete button is broken!");
+                });
         });
-    });
-</script>
-    
-
-<script>
-        //var uri = '/DVD/DVDremove';
-        //$(function () {
-        //    loadDVDs();
-        //});
-
-        //function loadDVDs() {
-        //    $.getJSON(uri)
-        //    .done(function (data) {
-        //        //clear the table
-        //        $("#dvdTable tbody tr").remove();
-
-        //        //on success, "data" contains a list of contacts
-        //        $.each(data, function (index, dvd) {
-        //            //add a table row for the contact
-        //            $(createRow(dvd)).appendTo($('#dvdTable tbody'));
-        //        })
-        //    })
-        //}
-
-        //function createRow(dvd) {
-        //    return '<tr><td>' + dvd.Title + '</td><td>' +
-        //        dvd.ReleaseDate + '</td><td>' + dvd.Rating + '</td><td>' + dvd.Studio +'</td><td>' + dvd.UserRating +'</td></tr>';
-        //}
-
     </script>
+
+
+    @* <script>
+                            //var uri = '/DVD/DVDremove';
+                            //$(function () {
+                            //    loadDVDs();
+                            //});
+
+                            //function loadDVDs() {
+                            //    $.getJSON(uri)
+                            //    .done(function (data) {
+                            //        //clear the table
+                            //        $("#dvdTable tbody tr").remove();
+
+                            //        //on success, "data" contains a list of contacts
+                            //        $.each(data, function (index, dvd) {
+                            //            //add a table row for the contact
+                            //            $(createRow(dvd)).appendTo($('#dvdTable tbody'));
+                            //        })
+                            //    })
+                            //}
+
+                            //function createRow(dvd) {
+                            //    return '<tr><td>' + dvd.Title + '</td><td>' +
+                            //        dvd.ReleaseDate + '</td><td>' + dvd.Rating + '</td><td>' + dvd.Studio +'</td><td>' + dvd.UserRating +'</td></tr>';
+                            //}
+
+        </script> *@
 
 }

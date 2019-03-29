@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SGCorpHRportal.Controllers
+namespace SGCorpHRportal.UI.Controllers
 {
     public class HomeController : Controller
     {
